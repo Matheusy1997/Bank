@@ -22,7 +22,12 @@ namespace UpcastingDowncasting.Entities
 
         public override void Withdraw(double amount)
         {
-                Balance -= (amount + 10);
+            if(amount > Balance)
+            {
+                throw new ArgumentException("Insufficient balance");
+            }
+            
+            Balance -= (amount + 10);
         }
 
         public void Loan(double amount)
