@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UpcastingDowncasting.Entities.Controllers.Perform.Operation;
 
 namespace UpcastingDowncasting.Entities.Controllers.Perform
 {
@@ -19,36 +20,23 @@ namespace UpcastingDowncasting.Entities.Controllers.Perform
                 switch (service)
                 {
                     case "Deposit":
-                        Console.Write("Enter the amount to deposit: R$ ");
-                        amount = double.Parse(Console.ReadLine());
-                        businessAccount.Deposit(amount);
+                        Deposit.PerformDeposit(businessAccount);
                         break;
                     case "Withdraw":
-                        Console.Write("Enter the amount to withdraw: R$ ");
-                        amount = double.Parse(Console.ReadLine());
-                        businessAccount.Withdraw(amount);
+                        Withdraw.PerformWithdraw(businessAccount);
                         break;
                     case "Loan":
-                        Console.Write("Enter the amount to loan: R$ ");
-                        amount = double.Parse(Console.ReadLine());
-                        businessAccount.Loan(amount);
+                        Loan.PerformLoan(businessAccount);
                         break;
                     case "UpdateLoanLimit":
-                        Console.Write("Enter the amount to update the loan limit: R$ ");
-                        amount = double.Parse(Console.ReadLine());
-                        businessAccount.UpdateLoanLimited(amount);
+                        UpdateLoanLimit.PerformUpdateLoanLimit(businessAccount);
                         break;
                     default:
                         Console.WriteLine("Invalid service");
                         break;
                 }
 
-                Console.Write("Want to do another operation y/n : ");
-                char option = char.Parse(Console.ReadLine());
-                if (option == 'n')
-                {
-                    break;
-                }
+                if (!Continue.ContinueOperation()) break;
             }
         }
     }

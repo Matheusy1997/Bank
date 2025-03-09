@@ -30,7 +30,7 @@ namespace UpcastingDowncasting.Entities.Controllers
                     }
                     while (true)
                     {
-                        int numberAccount = random.Next(1, 1000);
+                        int numberAccount = random.Next(1, 5001);
                         Account resultado = listAccount.Find(x => x.NumberAccount == numberAccount);
                         if (resultado == null)
                         {

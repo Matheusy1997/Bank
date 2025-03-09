@@ -32,8 +32,7 @@ namespace UpcastingDowncasting.Entities
         public override string ToString()
         {
             return $"Name: {Name}, Number Account: {NumberAccount}, " +
-                    $"Balance: {Balance.ToString("C", new CultureInfo("pt-br"))}, " +
-                    $"Interest Rate: {InterestRate}";
+                    $"Balance: {Balance.ToString("C", new CultureInfo("pt-br"))}";
         }
     }
 }

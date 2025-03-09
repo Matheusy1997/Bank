@@ -22,7 +22,7 @@ namespace UpcastingDowncasting.Entities
 
         public override void Withdraw(double amount)
         {
-            Balance -= (amount + 10);
+                Balance -= (amount + 10);
         }
 
         public void Loan(double amount)
@@ -31,7 +31,15 @@ namespace UpcastingDowncasting.Entities
             {
                 Balance += amount;
                 LoanLimit -= amount;
+                Console.WriteLine($"Loaned R$ {amount}. " +
+                    $"New balance: {Balance.ToString("C", new CultureInfo("pt-br"))}" +
+                    $". New LoanLimit {LoanLimit.ToString("C", new CultureInfo("pt-br"))}");
             }
+            else if (amount > LoanLimit)
+            {
+                throw new ArgumentException("Loan amount exceeds the limit");
+            }
+            
         }
 
         public void UpdateLoanLimited(double amount)

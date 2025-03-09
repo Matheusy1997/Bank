@@ -10,7 +10,7 @@ namespace UpcastingDowncasting.Entities.Controllers.Perform
     {
         public static void PerformAccountOperation(List<Account> listAccount)
         {
-            Console.WriteLine("Enter account number");
+            Console.Write("Enter account number: ");
             int numberSelected = int.Parse(Console.ReadLine());
             Account accountNumber = listAccount.Find(x => x.NumberAccount == numberSelected);
 

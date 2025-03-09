@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UpcastingDowncasting.Entities.Controllers.Perform.Operation;
 
 namespace UpcastingDowncasting.Entities.Controllers.Perform
 {
@@ -21,17 +22,12 @@ namespace UpcastingDowncasting.Entities.Controllers.Perform
                 switch (service)
                 {
                     case "Deposit":
-                        Console.Write("Enter the amount to deposit: R$ ");
-                        amount = double.Parse(Console.ReadLine());
-                        savingAccount.Deposit(amount);
+                        Deposit.PerformDeposit(savingAccount);
                         break;
                     case "Withdraw":
-                        Console.Write("Enter the amount to withdraw: R$ ");
-                        amount = double.Parse(Console.ReadLine());
-                        savingAccount.Withdraw(amount);
+                        Withdraw.PerformWithdraw(savingAccount);
                         break;
                     case "UpdateBalance":
-                        Console.Write($"Updated balance: R$ ");
                         savingAccount.UpdateBalance();
                         Console.WriteLine($"Update balance: " +
                             $"{savingAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
@@ -40,12 +36,8 @@ namespace UpcastingDowncasting.Entities.Controllers.Perform
                         Console.WriteLine("Invalid service");
                         break;
                 }
-                Console.Write("Want to do another operation y/n : ");
-                char option = char.Parse(Console.ReadLine());
-                if (option == 'n')
-                {
-                    break;
-                }
+
+                if (!Continue.ContinueOperation()) break;
 
             }
         }
