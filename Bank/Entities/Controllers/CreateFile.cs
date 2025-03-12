@@ -32,7 +32,6 @@ namespace Bank.Entities.Controllers
                             $"{savingAccount.Balance};{savingAccount.TypeAccount};");
                     }
                 }
-
             }
         }
     }
