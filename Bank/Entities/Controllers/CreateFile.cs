@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers
 {
     internal class CreateFile
     {
-        public static void CreateFileAccount(List<Account> listAccount)
+        public static void CreateFileAccounts(List<Account> listAccount)
         {
             List<string> files = new List<string>();
             string searchPath = @"C:\Users\Matheus\Documents\File\Bank\Account.txt";

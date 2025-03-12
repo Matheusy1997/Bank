@@ -19,7 +19,7 @@ namespace Bank
 
                 Option.OptionMenu(listAccount);
 
-                CreateFile.CreateFileAccount(listAccount);
+                CreateFile.CreateFileAccounts(listAccount);
             }
             catch (DomainException e)
             {
