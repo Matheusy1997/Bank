@@ -41,7 +41,7 @@ namespace Bank.Entities
             }
             else if (amount > LoanLimit)
             {
-                throw new ArgumentException("Loan amount exceeds the limit");
+                Console.WriteLine("Loan amount exceeds the limit");
             }
             
         }
