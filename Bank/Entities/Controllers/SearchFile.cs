@@ -4,42 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
-using UpcastingDowncasting.Entities.Enums;
 
-namespace UpcastingDowncasting.Entities.Controllers
+namespace Bank.Entities.Controllers
 {
     internal class SearchFile
     {
         public static void SearchFileAccount(List<Account> listAccount)
         {
             string searchPath = @"C:\Users\Matheus\Documents\File\Bank\Account.txt";
-            using (StreamReader sr = File.OpenText(searchPath))
+            string[] lines = File.ReadAllLines(searchPath);
+            foreach (string line in lines)
             {
-                while (sr.EndOfStream)
+                string[] fields = line.Split(';');
+                if (fields.Length >= 5 && fields[4].Trim().Equals("Business", StringComparison.OrdinalIgnoreCase))
                 {
-                    string[] fields = sr.ReadLine().Split(';');
-                    if (fields[4].Trim() == "Business")
-                    {
-                        string name = fields[0];
-                        int number = int.Parse(fields[1]);
-                        double balance = double.Parse(fields[2], CultureInfo.InvariantCulture);
-                        double loanLimit = double.Parse(fields[3], CultureInfo.InvariantCulture);
-                        TypeAccount typeAccount = TypeAccount.Business;
-                        listAccount.Add(new BusinessAccount(name, number, balance, loanLimit, typeAccount));
-                    }
-                    else
-                    {
-                        string name = fields[0];
-                        int number = int.Parse(fields[1]);
-                        double balance = double.Parse(fields[2], CultureInfo.InvariantCulture);
-                        TypeAccount typeAccount = TypeAccount.Savings;
-                        double interestRate = double.Parse(fields[4], CultureInfo.InvariantCulture);
-                        listAccount.Add(new SavingAccount(name, number, balance, typeAccount));
-                    }
+                    string name = fields[0];
+                    int number = int.Parse(fields[1]);
+                    double balance = double.Parse(fields[2], CultureInfo.InvariantCulture);
+                    double loanLimit = double.Parse(fields[3], CultureInfo.InvariantCulture);
+                    string typeAccount = fields[4];
+                    listAccount.Add(new BusinessAccount(name, number, balance, loanLimit, typeAccount));
+                }
+                else if(fields.Length >= 4 && fields[3].Trim().Equals("Savings", StringComparison.OrdinalIgnoreCase))
+                {
+                    string name = fields[0];
+                    int number = int.Parse(fields[1]);
+                    double balance = double.Parse(fields[2], CultureInfo.InvariantCulture);
+                    string typeAccount = fields[3];
+                    listAccount.Add(new SavingAccount(name, number, balance, typeAccount));
                 }
             }
-
-            Display.DisplayAccount(listAccount);
         }
     }
 }

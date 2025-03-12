@@ -4,19 +4,18 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UpcastingDowncasting.Entities.Enums;
 
-namespace UpcastingDowncasting.Entities
+namespace Bank.Entities
 {
     internal class BusinessAccount : Account
     {
         public double LoanLimit { get; set; }
         public BusinessAccount() { }
-        public BusinessAccount(string name, int number, double loanLimit, TypeAccount typeAccount) : base(name, number, typeAccount)
+        public BusinessAccount(string name, int number, double loanLimit, string typeAccount) : base(name, number, typeAccount)
         {
             LoanLimit = loanLimit;
         }
-        public BusinessAccount(string name, int number, double balance, double loanLimit, TypeAccount typeAccount) : base(name, number, balance, typeAccount)
+        public BusinessAccount(string name, int number, double balance, double loanLimit, string typeAccount) : base(name, number, balance, typeAccount)
         {
             LoanLimit = loanLimit;
         }
@@ -56,7 +55,7 @@ namespace UpcastingDowncasting.Entities
         {
             return $"Name: {Name}, Number Account: {NumberAccount}, " +
                     $"Balance: {Balance.ToString("C", new CultureInfo("pt-br"))}, " +
-                    $"Loan Limit: {LoanLimit.ToString("C", new CultureInfo("pt-br"))}";
+                    $"Loan Limit: {LoanLimit.ToString("C", new CultureInfo("pt-br"))}, Type Account: {TypeAccount}";
         }
     }
 }

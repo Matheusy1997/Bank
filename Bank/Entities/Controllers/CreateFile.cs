@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
-using UpcastingDowncasting.Entities.Enums;
 
-namespace UpcastingDowncasting.Entities.Controllers
+namespace Bank.Entities.Controllers
 {
     internal class CreateFile
     {
@@ -14,23 +13,27 @@ namespace UpcastingDowncasting.Entities.Controllers
         {
             List<string> files = new List<string>();
             string searchPath = @"C:\Users\Matheus\Documents\File\Bank\Account.txt";
+
+            File.WriteAllText(searchPath, string.Empty);
             using (StreamWriter sw = File.AppendText(searchPath))
             {
                 foreach (Account account in listAccount)
                 {
-                    if(account is BusinessAccount businessAccount)
+                    if (account is BusinessAccount businessAccount)
                     {
 
-                        sw.WriteLine($"{businessAccount.Name}; {businessAccount.NumberAccount}; {businessAccount.Balance}; {businessAccount.LoanLimit}; {account.TypeAccount};");
+                        sw.WriteLine($"{businessAccount.Name}; {businessAccount.NumberAccount}; " +
+                            $"{businessAccount.Balance}; {businessAccount.LoanLimit}; {account.TypeAccount};");
 
                     }
-                    else if(account is SavingAccount savingAccount)
+                    else if (account is SavingAccount savingAccount)
                     {
-                        sw.WriteLine($"{savingAccount.Name}; {savingAccount.NumberAccount}; {savingAccount.Balance}; {savingAccount.TypeAccount}");
+                        sw.WriteLine($"{savingAccount.Name};{savingAccount.NumberAccount};" +
+                            $"{savingAccount.Balance};{savingAccount.TypeAccount};");
                     }
                 }
-                
-            }   
+
+            }
         }
     }
 }

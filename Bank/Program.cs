@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using UpcastingDowncasting.Entities;
-using UpcastingDowncasting.Entities.Controllers;
-using UpcastingDowncasting.Entities.Controllers.Option;
-using UpcastingDowncasting.Entities.Controllers.Perform;
-using UpcastingDowncasting.Entities.Exception;
+using Bank.Entities;
+using Bank.Entities.Controllers;
+using Bank.Entities.Controllers.Option;
+using Bank.Entities.Controllers.Perform;
+using Bank.Entities.Exception;
 
-namespace UpcastingDowncasting
+namespace Bank
 {
     internal class Program
     {
@@ -15,12 +15,11 @@ namespace UpcastingDowncasting
             {
                 List<Account> listAccount = new List<Account>();
 
+                SearchFile.SearchFileAccount(listAccount);
 
                 Option.OptionMenu(listAccount);
 
-                //PerformAccount.PerformAccountOperation(listAccount);
-
-                //Display.DisplayAccount(listAccount);
+                CreateFile.CreateFileAccount(listAccount);
             }
             catch (DomainException e)
             {
@@ -29,6 +28,10 @@ namespace UpcastingDowncasting
             catch (FormatException e)
             {
                 Console.WriteLine("Format error: " + e.Message);
+            }
+            catch(IOException e)
+            {
+                Console.WriteLine("An error occurred while accessing the file: " + e.Message);
             }
             catch (Exception e)
             {

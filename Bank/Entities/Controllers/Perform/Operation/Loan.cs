@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UpcastingDowncasting.Entities.Controllers.Perform.Operation
+namespace Bank.Entities.Controllers.Perform.Operation
 {
     internal class Loan
     {

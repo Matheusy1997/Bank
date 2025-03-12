@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UpcastingDowncasting.Entities.Controllers.Perform.Operation;
+using Bank.Entities.Controllers.Perform.Operation;
 
-namespace UpcastingDowncasting.Entities.Controllers.Perform
+namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformBusinessAccount
     {

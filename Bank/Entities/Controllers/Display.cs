@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UpcastingDowncasting.Entities.Controllers
+namespace Bank.Entities.Controllers
 {
     internal class Display
     {

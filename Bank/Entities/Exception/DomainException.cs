@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UpcastingDowncasting.Entities.Exception
+namespace Bank.Entities.Exception
 {
     internal class DomainException : ApplicationException
     {
