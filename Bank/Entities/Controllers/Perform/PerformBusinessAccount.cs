@@ -9,12 +9,12 @@ namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformBusinessAccount
     {
-        public static void PerformBusinessAccountOperation(BusinessAccount businessAccount)
+        public static void PerformBusinessAccountOperation(List<Account> listAccount, BusinessAccount businessAccount)
         {
             while (true)
             {
                 Console.WriteLine("Choose a service");
-                Console.Write("Deposit/Withdraw/Loan/UpdateLoanLimit: ");
+                Console.Write("Deposit / Withdraw / Loan / UpdateLoanLimit / Transfer: ");
                 string service = Console.ReadLine();
                 double amount = 0.0;
                 switch (service)
@@ -30,6 +30,9 @@ namespace Bank.Entities.Controllers.Perform
                         break;
                     case "UpdateLoanLimit":
                         UpdateLoanLimit.PerformUpdateLoanLimit(businessAccount);
+                        break;
+                    case "Transfer":
+                        Transfer.TransferAccount(listAccount, businessAccount);
                         break;
                     default:
                         Console.WriteLine("Invalid service");

@@ -16,12 +16,12 @@ namespace Bank.Entities.Controllers.Perform
 
             if (accountNumber is BusinessAccount businessAccount)
             {
-                PerformBusinessAccount.PerformBusinessAccountOperation(businessAccount);
+                PerformBusinessAccount.PerformBusinessAccountOperation(listAccount, businessAccount);
 
             }
             else if (accountNumber is SavingAccount savingAccount)
             {
-                PerformSavingsAccount.PerformSavingsAccountOperation(savingAccount);
+                PerformSavingsAccount.PerformSavingsAccountOperation(listAccount, savingAccount);
 
             }
         }
