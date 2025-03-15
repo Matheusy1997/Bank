@@ -21,7 +21,6 @@ namespace Bank.Entities.Controllers.Perform.Operation
             if (accountReceive != null)
             {
                 account.Transfer(amount, accountReceive);
-                Console.WriteLine($"New balance: {account.Balance.ToString("C", new CultureInfo("pt-br"))}");
             }
             else
             {
