@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,12 +46,23 @@ namespace Bank.Entities
 
         public int CompareTo(object? obj)
         {
-            if(!(obj is Account))
+            if (!(obj is Account))
             {
                 throw new ArgumentException("Comparing object is not an Account");
             }
 
             return NumberAccount.CompareTo(((Account)obj).NumberAccount);
+        }
+
+        public void Transfer(double amount, Account account)
+        {
+            if (amount > Balance)
+            {
+                throw new ArgumentException("Insufficient balance");
+            }
+            Balance -= amount;
+            account.Deposit(amount);
+            Console.WriteLine(DateTime.Now + ", " + amount.ToString("C", new CultureInfo("pt-br")) + "Recipient: " + account.Name);
         }
     }
 }
