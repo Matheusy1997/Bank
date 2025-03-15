@@ -62,8 +62,8 @@ namespace Bank.Entities
             }
             Balance -= amount;
             account.Deposit(amount);
-            Console.WriteLine(DateTime.Now + ", " + amount.ToString("C", new CultureInfo("pt-br")) + "Recipient: " + account.Name + 
-                "New Balance: " + Balance.ToString("C", new CultureInfo("pt-br")));
+            Console.WriteLine(DateTime.Now + ", " + amount.ToString("C", new CultureInfo("pt-br")) + " Recipient: " + account.Name + 
+                " New Balance: " + Balance.ToString("C", new CultureInfo("pt-br")));
         }
     }
 }

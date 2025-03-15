@@ -40,8 +40,8 @@ namespace Bank.Entities.Controllers
             string searchPath = $@"C:\Users\Matheus\Documents\File\Bank\Account\{accountTransfer.NumberAccount}.txt";
             using (StreamWriter sw = File.AppendText(searchPath))
             {
-                sw.WriteLine($"{DateTime.Now}, {amount.ToString("C", new CultureInfo("pt-br"))}, Recipient: {accountReceive.Name}" +
-                    $", New Banlace: {accountTransfer.Balance}");
+                sw.WriteLine($"{DateTime.Now}; {amount.ToString("C", new CultureInfo("pt-br"))}; Recipient: {accountReceive.Name}" +
+                    $"; New Banlace: {accountTransfer.Balance}");
             }
         }
     }
