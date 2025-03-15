@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Globalization; 
+using System.Globalization;
 
 namespace Bank.Entities.Controllers.Perform.Operation
 {
@@ -27,6 +27,7 @@ namespace Bank.Entities.Controllers.Perform.Operation
             {
                 Console.WriteLine("Account not found");
             }
-
+            CreateFile.CreateFileAccounts(listAccount);
         }
     }
+}
