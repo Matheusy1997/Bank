@@ -21,6 +21,7 @@ namespace Bank.Entities.Controllers.Perform.Operation
             if (accountReceive != null)
             {
                 account.Transfer(amount, accountReceive);
+                CreateFile.CreateFileTransactions(account, accountReceive, amount);
             }
             else
             {
