@@ -22,6 +22,7 @@ namespace Bank.Entities.Controllers.Perform.Operation
             {
                 account.Transfer(amount, accountReceive);
                 CreateFile.CreateFileTransactions(account, accountReceive, amount);
+                CreateFile.CreateFileAccounts(listAccount);
             }
             else
             {
