@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Entities
 {
-    internal abstract class Account
+    internal abstract class Account : IComparable
     {
         public string Name { get; set; }
         public int NumberAccount { get; set; }
@@ -42,5 +42,15 @@ namespace Bank.Entities
         }
 
         public abstract void Deposit(double amount);
+
+        public int CompareTo(object? obj)
+        {
+            if(!(obj is Account))
+            {
+                throw new ArgumentException("Comparing object is not an Account");
+            }
+
+            return NumberAccount.CompareTo(((Account)obj).NumberAccount);
+        }
     }
 }

@@ -40,6 +40,7 @@ namespace Bank.Entities.Controllers
                         {
                             listAccount.Add(new BusinessAccount(nameAccount.Trim().ToUpper(),
                                 numberAccount, 500.00, "Business"));
+                            CreateFile.CreateFileAccounts(listAccount);
                             break;
                         }
                     }
@@ -61,6 +62,7 @@ namespace Bank.Entities.Controllers
                         if (resultado == null)
                         {
                             listAccount.Add(new SavingAccount(nameAccount, numberAccount, "Savings"));
+                            CreateFile.CreateFileAccounts(listAccount);
                             break;
                         }
                     }

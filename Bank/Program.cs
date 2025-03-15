@@ -16,10 +16,11 @@ namespace Bank
                 List<Account> listAccount = new List<Account>();
 
                 SearchFile.SearchFileAccount(listAccount);
+                listAccount.Sort();
 
                 Option.OptionMenu(listAccount);
 
-                CreateFile.CreateFileAccounts(listAccount);
+                
             }
             catch (DomainException e)
             {

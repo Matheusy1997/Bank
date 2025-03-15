@@ -39,7 +39,7 @@ namespace Bank.Entities.Controllers.Option
                         Display.DisplayAccount(listAccount);
                         break;
                     case 4:
-                        //Delete.DeleteAccount(listAccount);
+                        Delete.DeleteAccount(listAccount);
                         break;
                     case 5:
                         Console.WriteLine("Bye!");
