@@ -13,10 +13,9 @@ namespace Bank
         {
             try
             {
-                List<Account> listAccount = new List<Account>();
+                SortedSet<Account> listAccount = new SortedSet<Account>();
 
                 SearchFile.SearchFileAccount(listAccount);
-                listAccount.Sort();
 
                 Option.OptionMenu(listAccount);
 

@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers.Option
 {
     internal class Option
     {
-        public static void OptionMenu(List<Account> listAccount)
+        public static void OptionMenu(SortedSet<Account> listAccount)
         {
             int option = 0;
             do

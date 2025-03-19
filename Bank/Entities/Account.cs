@@ -44,15 +44,6 @@ namespace Bank.Entities
 
         public abstract void Deposit(double amount);
 
-        public int CompareTo(object? obj)
-        {
-            if (!(obj is Account))
-            {
-                throw new ArgumentException("Comparing object is not an Account");
-            }
-
-            return NumberAccount.CompareTo(((Account)obj).NumberAccount);
-        }
 
         public void Transfer(double amount, Account account)
         {
@@ -64,6 +55,29 @@ namespace Bank.Entities
             account.Deposit(amount);
             Console.WriteLine(DateTime.Now + ", " + amount.ToString("C", new CultureInfo("pt-br")) + " Recipient: " + account.Name + 
                 " New Balance: " + Balance.ToString("C", new CultureInfo("pt-br")));
+        }
+        public int CompareTo(object? obj)
+        {
+            if (!(obj is Account))
+            {
+                throw new ArgumentException("Comparing object is not an Account");
+            }
+
+            return NumberAccount.CompareTo(((Account)obj).NumberAccount);
+        }
+
+        public override int GetHashCode()
+        {
+            return NumberAccount.GetHashCode();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if(obj is Account account)
+            {
+               return NumberAccount.Equals(account.NumberAccount);
+            }
+            return false;
         }
     }
 }

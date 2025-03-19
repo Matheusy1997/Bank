@@ -8,21 +8,32 @@ namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformAccount
     {
-        public static void PerformAccountOperation(List<Account> listAccount)
+        public static void PerformAccountOperation(SortedSet<Account> listAccount)
         {
             Console.Write("Enter account number: ");
             int numberSelected = int.Parse(Console.ReadLine());
-            Account accountNumber = listAccount.Find(x => x.NumberAccount == numberSelected);
+            Account accountNumber = listAccount.FirstOrDefault(x => x.NumberAccount == numberSelected);
 
-            if (accountNumber is BusinessAccount businessAccount)
+            if (accountNumber != null)
             {
-                PerformBusinessAccount.PerformBusinessAccountOperation(listAccount, businessAccount);
+                if (accountNumber is BusinessAccount businessAccount)
+                {
+                    PerformBusinessAccount.PerformBusinessAccountOperation(listAccount, businessAccount);
 
+                }
+                else if (accountNumber is SavingAccount savingAccount)
+                {
+                    PerformSavingsAccount.PerformSavingsAccountOperation(listAccount, savingAccount);
+
+                }
+                else
+                {
+                    Console.WriteLine("Account type not supported.");
+                }
             }
-            else if (accountNumber is SavingAccount savingAccount)
+            else
             {
-                PerformSavingsAccount.PerformSavingsAccountOperation(listAccount, savingAccount);
-
+                Console.WriteLine("Account not found.");
             }
         }
     }

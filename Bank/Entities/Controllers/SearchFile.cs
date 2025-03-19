@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers
 {
     internal class SearchFile
     {
-        public static void SearchFileAccount(List<Account> listAccount)
+        public static void SearchFileAccount(SortedSet<Account> listAccount)
         {
             string searchPath = @"C:\Users\Matheus\Documents\File\Bank\Account.txt";
             string[] lines = File.ReadAllLines(searchPath);

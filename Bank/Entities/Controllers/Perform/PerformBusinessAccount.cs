@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformBusinessAccount
     {
-        public static void PerformBusinessAccountOperation(List<Account> listAccount, BusinessAccount businessAccount)
+        public static void PerformBusinessAccountOperation(SortedSet<Account> listAccount, BusinessAccount businessAccount)
         {
             while (true)
             {

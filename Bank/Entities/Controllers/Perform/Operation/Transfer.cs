@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers.Perform.Operation
 {
     internal class Transfer
     {
-        public static void TransferAccount(List<Account> listAccount, Account account)
+        public static void TransferAccount(SortedSet<Account> listAccount, Account account)
         {
 
             Console.Write("Enter the amount to transfer: R$ ");
@@ -17,7 +17,7 @@ namespace Bank.Entities.Controllers.Perform.Operation
 
             Console.Write("Enter the account number to receive the transfer: ");
             int numberAccountReceive = int.Parse(Console.ReadLine());
-            Account accountReceive = listAccount.Find(x => x.NumberAccount == numberAccountReceive);
+            Account accountReceive = listAccount.FirstOrDefault(x => x.NumberAccount == numberAccountReceive);
             if (accountReceive != null)
             {
                 account.Transfer(amount, accountReceive);

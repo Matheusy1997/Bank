@@ -8,7 +8,7 @@ namespace Bank.Entities.Controllers
 {
     internal class Display
     {
-        public static void DisplayAccount(List<Account> listAccount)
+        public static void DisplayAccount(SortedSet<Account> listAccount)
         {
             foreach (Account account in listAccount)
             {

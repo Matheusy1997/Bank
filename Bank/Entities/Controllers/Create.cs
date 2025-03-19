@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bank.Entities.Controllers.Perform.Operation;
 using Bank.Entities.Exception;
 
 namespace Bank.Entities.Controllers
 {
     internal class Create
     {
-        public static void CreateAccount(List<Account> listAccount)
+        public static void CreateAccount(SortedSet<Account> listAccount)
         {
             Random random = new Random();
 
@@ -34,15 +35,17 @@ namespace Bank.Entities.Controllers
 
                     while (true)
                     {
-                        int numberAccount = random.Next(1, 5001);
-                        Account resultado = listAccount.Find(x => x.NumberAccount == numberAccount);
-                        if (resultado == null)
+                        int numberAccount = random.Next(100000, 200000);
+                        BusinessAccount businessAccount = new BusinessAccount(nameAccount.Trim().ToUpper(),
+                                numberAccount, 500.00, "Business");
+
+                        if (!listAccount.Contains(businessAccount))
                         {
-                            listAccount.Add(new BusinessAccount(nameAccount.Trim().ToUpper(),
-                                numberAccount, 500.00, "Business"));
-                            CreateFile.CreateFileAccounts(listAccount);
+                            listAccount.Add(businessAccount);
+                            CreateFile.CreateFileAccounts(listAccount); 
                             break;
                         }
+                        continue;
                     }
                     break;
                 case "savings":
@@ -57,15 +60,22 @@ namespace Bank.Entities.Controllers
 
                     while (true)
                     {
-                        int numberAccount = random.Next(1, 5001);
-                        Account resultado = listAccount.Find(x => x.NumberAccount == numberAccount);
-                        if (resultado == null)
+                        int numberAccount = random.Next(100000, 200000);
+
+                        SavingAccount savingAccount = new SavingAccount(nameAccount.Trim().ToUpper(),
+                                numberAccount, 500.00, "Savings");
+
+                        if (!listAccount.Contains(savingAccount))
                         {
-                            listAccount.Add(new SavingAccount(nameAccount, numberAccount, "Savings"));
+                            listAccount.Add(savingAccount);
                             CreateFile.CreateFileAccounts(listAccount);
                             break;
                         }
+                        continue;
                     }
+                    break;
+                default:
+                    Console.WriteLine("Type account invalid!");
                     break;
             }
         }

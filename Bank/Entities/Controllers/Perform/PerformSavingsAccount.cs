@@ -10,7 +10,7 @@ namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformSavingsAccount
     {
-        public static void PerformSavingsAccountOperation(List<Account> listAccount,SavingAccount savingAccount)
+        public static void PerformSavingsAccountOperation(SortedSet<Account> listAccount,SavingAccount savingAccount)
         {
             while (true)
             {
