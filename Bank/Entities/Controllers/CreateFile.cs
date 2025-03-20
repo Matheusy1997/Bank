@@ -22,8 +22,8 @@ namespace Bank.Entities.Controllers
                     if (account.Value is BusinessAccount businessAccount)
                     {
 
-                        sw.WriteLine($"{businessAccount.Name}; {businessAccount.NumberAccount}; " +
-                            $"{businessAccount.Balance}; {businessAccount.LoanLimit}; {businessAccount.TypeAccount};");
+                        sw.WriteLine($"{businessAccount.Name};{businessAccount.NumberAccount};" +
+                            $"{businessAccount.Balance};{businessAccount.LoanLimit};{businessAccount.TypeAccount};");
 
                     }
                     else if (account.Value is SavingAccount savingAccount)
