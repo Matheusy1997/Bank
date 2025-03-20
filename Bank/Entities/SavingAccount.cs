@@ -9,7 +9,7 @@ namespace Bank.Entities
 {
     internal class SavingAccount : Account
     {
-        public double InterestRate { get; set; }
+        public double InterestRate { get; set; } = 0.01;
         public SavingAccount() { }
 
         public SavingAccount(string name, int number,string typeAccount) : base(name, number, typeAccount)

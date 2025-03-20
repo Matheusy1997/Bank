@@ -19,7 +19,8 @@ namespace Bank.Entities.Controllers.Option
                 Console.WriteLine("3. List All Accounts");
                 Console.WriteLine("4. Delet Account");
                 Console.WriteLine("5. Out");
-                Console.Write("Select an Option: ");
+                Console.Write("Choose a service: ");
+
                 string input = Console.ReadLine();
                 if (!int.TryParse(input, out option))
                 {
