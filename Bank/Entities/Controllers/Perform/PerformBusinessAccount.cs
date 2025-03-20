@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformBusinessAccount
     {
-        public static void PerformBusinessAccountOperation(SortedSet<Account> listAccount, BusinessAccount businessAccount)
+        public static void PerformBusinessAccountOperation(Dictionary<int, Account> dictionaryAccount, BusinessAccount businessAccount)
         {
             while (true)
             {
@@ -32,7 +32,7 @@ namespace Bank.Entities.Controllers.Perform
                         UpdateLoanLimit.PerformUpdateLoanLimit(businessAccount);
                         break;
                     case "Transfer":
-                        Transfer.TransferAccount(listAccount, businessAccount);
+                        Transfer.TransferAccount(dictionaryAccount, businessAccount);
                         break;
                     default:
                         Console.WriteLine("Invalid service");

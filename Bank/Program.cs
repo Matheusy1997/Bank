@@ -13,11 +13,11 @@ namespace Bank
         {
             try
             {
-                SortedSet<Account> listAccount = new SortedSet<Account>();
+                Dictionary<int, Account> dictionaryAccount = new Dictionary<int, Account>();
 
-                SearchFile.SearchFileAccount(listAccount);
+                SearchFile.SearchFileAccount(dictionaryAccount);
 
-                Option.OptionMenu(listAccount);
+                Option.OptionMenu(dictionaryAccount);
 
                 
             }

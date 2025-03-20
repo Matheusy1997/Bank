@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers
 {
     internal class SearchFile
     {
-        public static void SearchFileAccount(SortedSet<Account> listAccount)
+        public static void SearchFileAccount(Dictionary<int, Account> dictionaryAccount)
         {
             string searchPath = @"C:\Users\Matheus\Documents\File\Bank\Account.txt";
             string[] lines = File.ReadAllLines(searchPath);
@@ -23,7 +23,7 @@ namespace Bank.Entities.Controllers
                     double balance = double.Parse(fields[2], CultureInfo.InvariantCulture);
                     double loanLimit = double.Parse(fields[3], CultureInfo.InvariantCulture);
                     string typeAccount = fields[4];
-                    listAccount.Add(new BusinessAccount(name, number, balance, loanLimit, typeAccount));
+                    dictionaryAccount[number] = new BusinessAccount(name, number, balance, loanLimit, typeAccount);
                 }
                 else if(fields.Length >= 4 && fields[3].Trim().Equals("Savings", StringComparison.OrdinalIgnoreCase))
                 {
@@ -31,7 +31,7 @@ namespace Bank.Entities.Controllers
                     int number = int.Parse(fields[1]);
                     double balance = double.Parse(fields[2], CultureInfo.InvariantCulture);
                     string typeAccount = fields[3];
-                    listAccount.Add(new SavingAccount(name, number, balance, typeAccount));
+                    dictionaryAccount[number] = new SavingAccount(name, number, balance, typeAccount);
                 }
             }
         }

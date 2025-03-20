@@ -10,7 +10,7 @@ namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformSavingsAccount
     {
-        public static void PerformSavingsAccountOperation(SortedSet<Account> listAccount,SavingAccount savingAccount)
+        public static void PerformSavingsAccountOperation(Dictionary<int, Account> dictionaryAccount,SavingAccount savingAccount)
         {
             while (true)
             {
@@ -33,7 +33,7 @@ namespace Bank.Entities.Controllers.Perform
                             $"{savingAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
                         break;
                     case "Transfer":
-                        Transfer.TransferAccount(listAccount, savingAccount);
+                        Transfer.TransferAccount(dictionaryAccount, savingAccount);
                         break;
                     default:
                         Console.WriteLine("Invalid service");

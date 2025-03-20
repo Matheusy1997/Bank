@@ -10,7 +10,7 @@ namespace Bank.Entities.Controllers
 {
     internal class Create
     {
-        public static void CreateAccount(SortedSet<Account> listAccount)
+        public static void CreateAccount(Dictionary<int, Account> dictionaryAccount)
         {
             Random random = new Random();
 
@@ -18,6 +18,12 @@ namespace Bank.Entities.Controllers
             Console.Write("Business or Savings: ");
             string accountTypeInput = Console.ReadLine();
             Console.WriteLine();
+
+            if (String.IsNullOrEmpty(accountTypeInput) || String.IsNullOrWhiteSpace(accountTypeInput) 
+                || accountTypeInput.ToLower() != "business" || accountTypeInput.ToLower() != "savings")
+            {
+                Console.WriteLine("Type account invalid!");
+            }
 
             string nameAccount;
 
@@ -36,13 +42,13 @@ namespace Bank.Entities.Controllers
                     while (true)
                     {
                         int numberAccount = random.Next(100000, 200000);
-                        BusinessAccount businessAccount = new BusinessAccount(nameAccount.Trim().ToUpper(),
-                                numberAccount, 500.00, "Business");
 
-                        if (!listAccount.Contains(businessAccount))
+                        if (!dictionaryAccount.ContainsKey(numberAccount))
                         {
-                            listAccount.Add(businessAccount);
-                            CreateFile.CreateFileAccounts(listAccount); 
+                            BusinessAccount businessAccount = new BusinessAccount(nameAccount.Trim().ToUpper(),
+                                    numberAccount, 500.00, "Business");
+                            dictionaryAccount[numberAccount] = businessAccount;
+                            CreateFile.CreateFileAccounts(dictionaryAccount); 
                             break;
                         }
                         continue;
@@ -62,20 +68,17 @@ namespace Bank.Entities.Controllers
                     {
                         int numberAccount = random.Next(100000, 200000);
 
-                        SavingAccount savingAccount = new SavingAccount(nameAccount.Trim().ToUpper(),
-                                numberAccount, 500.00, "Savings");
 
-                        if (!listAccount.Contains(savingAccount))
+                        if (!dictionaryAccount.ContainsKey(numberAccount))
                         {
-                            listAccount.Add(savingAccount);
-                            CreateFile.CreateFileAccounts(listAccount);
+                            SavingAccount savingAccount = new SavingAccount(nameAccount.Trim().ToUpper(),
+                                    numberAccount, 500.00, "Savings");
+                            dictionaryAccount[numberAccount] = savingAccount;
+                            CreateFile.CreateFileAccounts(dictionaryAccount);
                             break;
                         }
                         continue;
                     }
-                    break;
-                default:
-                    Console.WriteLine("Type account invalid!");
                     break;
             }
         }

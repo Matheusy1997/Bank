@@ -8,22 +8,22 @@ namespace Bank.Entities.Controllers.Perform
 {
     internal class PerformAccount
     {
-        public static void PerformAccountOperation(SortedSet<Account> listAccount)
+        public static void PerformAccountOperation(Dictionary<int, Account> dictionaryAccount)
         {
             Console.Write("Enter account number: ");
             int numberSelected = int.Parse(Console.ReadLine());
-            Account accountNumber = listAccount.FirstOrDefault(x => x.NumberAccount == numberSelected);
+            Account accountNumber = dictionaryAccount[numberSelected];
 
             if (accountNumber != null)
             {
                 if (accountNumber is BusinessAccount businessAccount)
                 {
-                    PerformBusinessAccount.PerformBusinessAccountOperation(listAccount, businessAccount);
+                    PerformBusinessAccount.PerformBusinessAccountOperation(dictionaryAccount, businessAccount);
 
                 }
                 else if (accountNumber is SavingAccount savingAccount)
                 {
-                    PerformSavingsAccount.PerformSavingsAccountOperation(listAccount, savingAccount);
+                    PerformSavingsAccount.PerformSavingsAccountOperation(dictionaryAccount, savingAccount);
 
                 }
                 else

@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers.Option
 {
     internal class Option
     {
-        public static void OptionMenu(SortedSet<Account> listAccount)
+        public static void OptionMenu(Dictionary<int, Account> dictionaryAccount)
         {
             int option = 0;
             do
@@ -30,16 +30,16 @@ namespace Bank.Entities.Controllers.Option
                 switch (option)
                 {
                     case 1:
-                        Create.CreateAccount(listAccount);
+                        Create.CreateAccount(dictionaryAccount);
                         break;
                     case 2:
-                        PerformAccount.PerformAccountOperation(listAccount);
+                        PerformAccount.PerformAccountOperation(dictionaryAccount);
                         break;
                     case 3:
-                        Display.DisplayAccount(listAccount);
+                        Display.DisplayAccount(dictionaryAccount);
                         break;
                     case 4:
-                        Delete.DeleteAccount(listAccount);
+                        Delete.DeleteAccount(dictionaryAccount);
                         break;
                     case 5:
                         Console.WriteLine("Bye!");
@@ -48,6 +48,7 @@ namespace Bank.Entities.Controllers.Option
                         Console.WriteLine("Invalid Option");
                         break;
                 }
+                Console.WriteLine();
             } while (option != 5);
 
         }

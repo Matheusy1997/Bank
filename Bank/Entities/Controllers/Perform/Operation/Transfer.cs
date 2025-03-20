@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers.Perform.Operation
 {
     internal class Transfer
     {
-        public static void TransferAccount(SortedSet<Account> listAccount, Account account)
+        public static void TransferAccount(Dictionary<int, Account> dictionaryAccount, Account account)
         {
 
             Console.Write("Enter the amount to transfer: R$ ");
@@ -17,18 +17,18 @@ namespace Bank.Entities.Controllers.Perform.Operation
 
             Console.Write("Enter the account number to receive the transfer: ");
             int numberAccountReceive = int.Parse(Console.ReadLine());
-            Account accountReceive = listAccount.FirstOrDefault(x => x.NumberAccount == numberAccountReceive);
+            Account accountReceive = dictionaryAccount[numberAccountReceive];
             if (accountReceive != null)
             {
                 account.Transfer(amount, accountReceive);
                 CreateFile.CreateFileTransactions(account, accountReceive, amount);
-                CreateFile.CreateFileAccounts(listAccount);
+                CreateFile.CreateFileAccounts(dictionaryAccount);
             }
             else
             {
                 Console.WriteLine("Account not found");
             }
-            CreateFile.CreateFileAccounts(listAccount);
+            CreateFile.CreateFileAccounts(dictionaryAccount);
         }
     }
 }

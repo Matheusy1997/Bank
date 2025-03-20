@@ -9,7 +9,7 @@ namespace Bank.Entities.Controllers
 {
     internal class CreateFile
     {
-        public static void CreateFileAccounts(SortedSet<Account> listAccount)
+        public static void CreateFileAccounts(Dictionary<int, Account> dictionaryAccount)
         {
             List<string> files = new List<string>();
             string searchPath = @"C:\Users\Matheus\Documents\File\Bank\Account.txt";
@@ -17,16 +17,16 @@ namespace Bank.Entities.Controllers
             File.WriteAllText(searchPath, string.Empty);
             using (StreamWriter sw = File.AppendText(searchPath))
             {
-                foreach (Account account in listAccount)
+                foreach (var account in dictionaryAccount)
                 {
-                    if (account is BusinessAccount businessAccount)
+                    if (account.Value is BusinessAccount businessAccount)
                     {
 
                         sw.WriteLine($"{businessAccount.Name}; {businessAccount.NumberAccount}; " +
-                            $"{businessAccount.Balance}; {businessAccount.LoanLimit}; {account.TypeAccount};");
+                            $"{businessAccount.Balance}; {businessAccount.LoanLimit}; {businessAccount.TypeAccount};");
 
                     }
-                    else if (account is SavingAccount savingAccount)
+                    else if (account.Value is SavingAccount savingAccount)
                     {
                         sw.WriteLine($"{savingAccount.Name};{savingAccount.NumberAccount};" +
                             $"{savingAccount.Balance};{savingAccount.TypeAccount};");

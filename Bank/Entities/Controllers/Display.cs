@@ -8,11 +8,11 @@ namespace Bank.Entities.Controllers
 {
     internal class Display
     {
-        public static void DisplayAccount(SortedSet<Account> listAccount)
+        public static void DisplayAccount(Dictionary<int, Account> dictionaryAccount)
         {
-            foreach (Account account in listAccount)
+            foreach (var account in dictionaryAccount)
             {
-                Console.WriteLine(account);
+                Console.WriteLine(account.Value);
             }
         }
     }
