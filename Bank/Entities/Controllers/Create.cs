@@ -19,12 +19,6 @@ namespace Bank.Entities.Controllers
             string accountTypeInput = Console.ReadLine();
             Console.WriteLine();
 
-            if (String.IsNullOrEmpty(accountTypeInput) || String.IsNullOrWhiteSpace(accountTypeInput) 
-                || accountTypeInput.ToLower() != "business" || accountTypeInput.ToLower() != "savings")
-            {
-                Console.WriteLine("Type account invalid!");
-            }
-
             string nameAccount;
 
             switch (accountTypeInput.ToLower())
@@ -72,12 +66,19 @@ namespace Bank.Entities.Controllers
                         if (!dictionaryAccount.ContainsKey(numberAccount))
                         {
                             SavingAccount savingAccount = new SavingAccount(nameAccount.Trim().ToUpper(),
-                                    numberAccount, 500.00, "Savings");
+                                    numberAccount, "Savings");
                             dictionaryAccount[numberAccount] = savingAccount;
                             CreateFile.CreateFileAccounts(dictionaryAccount);
                             break;
                         }
                         continue;
+                    }
+                    break;
+                default:
+                    if (String.IsNullOrEmpty(accountTypeInput) || String.IsNullOrWhiteSpace(accountTypeInput)
+                        || accountTypeInput.ToLower() != "business" || accountTypeInput.ToLower() != "savings")
+                    {
+                        Console.WriteLine("Type account invalid!");
                     }
                     break;
             }

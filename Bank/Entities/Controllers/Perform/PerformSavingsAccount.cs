@@ -15,24 +15,24 @@ namespace Bank.Entities.Controllers.Perform
             while (true)
             {
                 Console.WriteLine("Choose a service");
-                Console.Write("Deposit/Withdraw/UpdateBalance: ");
-                string service = Console.ReadLine();
+                Console.Write("Deposit/Withdraw/UpdateBalance/Transfer: ");
+                string service = Console.ReadLine().ToLower();
                 double amount = 0.0;
 
                 switch (service)
                 {
-                    case "Deposit":
+                    case "deposit":
                         Deposit.PerformDeposit(savingAccount);
                         break;
-                    case "Withdraw":
+                    case "withdraw":
                         Withdraw.PerformWithdraw(savingAccount);
                         break;
-                    case "UpdateBalance":
+                    case "updateBalance":
                         savingAccount.UpdateBalance();
                         Console.WriteLine($"Update balance: " +
                             $"{savingAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
                         break;
-                    case "Transfer":
+                    case "transfer":
                         Transfer.TransferAccount(dictionaryAccount, savingAccount);
                         break;
                     default:
