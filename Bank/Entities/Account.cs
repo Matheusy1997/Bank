@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Entities
 {
-    internal abstract class Account : IComparable
+    internal abstract class Account : IComparable<Account>
     {
         public string Name { get; set; }
         public int NumberAccount { get; set; }
@@ -58,14 +58,9 @@ namespace Bank.Entities
                 + "Recipient: " + account.Name + ", "
                 + "New Balance: " + Balance.ToString("C", new CultureInfo("pt-br")));
         }
-        public int CompareTo(object? obj)
+        public int CompareTo(Account obj)
         {
-            if (!(obj is Account))
-            {
-                throw new ArgumentException("Comparing object is not an Account");
-            }
-
-            return NumberAccount.CompareTo(((Account)obj).NumberAccount);
+            return NumberAccount.CompareTo(obj.NumberAccount);
         }
 
         public override int GetHashCode()
