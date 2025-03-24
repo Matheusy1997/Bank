@@ -9,6 +9,6 @@ namespace Bank.Interfaces
     internal interface ITransferInput
     {
         string GetAmount();
-        int GetNumberAccount();
+        string GetNumberAccount();
     }
 }

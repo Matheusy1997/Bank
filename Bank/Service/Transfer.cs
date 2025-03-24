@@ -17,7 +17,7 @@ namespace Bank.Service
 
             ConsoleTransferInput consoleTransferInput = new ConsoleTransferInput();
 
-            int numberAccountReceive = consoleTransferInput.GetNumberAccount();
+            string numberAccountReceive = consoleTransferInput.GetNumberAccount();
 
             ValidateService.ValidateAccount(dictionaryAccount, numberAccountReceive);
 

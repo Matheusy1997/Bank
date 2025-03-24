@@ -10,9 +10,14 @@ namespace Bank.Service
 {
     internal class ValidateService
     {
-        public static void ValidateAccount(Dictionary<int, Account> account, int number)
+        public static void ValidateAccount(Dictionary<int, Account> account, string number)
         {
-            if(!account.ContainsKey(number))
+            int numberAccount = 0;
+            if(!int.TryParse(number, out numberAccount))
+            {
+                throw new ArgumentException("Invalid input. Please enter a number Account");
+            }
+            if(!account.ContainsKey(numberAccount))
             {
                 throw new ArgumentException("Destination account not found!");
             }

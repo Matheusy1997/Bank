@@ -16,10 +16,10 @@ namespace Bank.Service
             return input;
         }
 
-        public int GetNumberAccount()
+        public string GetNumberAccount()
         {
             Console.Write("Enter the account number to receive the transfer: ");
-            int numberAccountReceive = int.Parse(Console.ReadLine());
+            string numberAccountReceive = Console.ReadLine();
             return numberAccountReceive;
         }
     }
