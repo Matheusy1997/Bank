@@ -2,7 +2,6 @@
 using Bank.Controllers;
 using Bank.Data;
 using Bank.Entities;
-using Bank.Controllers;
 using Bank.Entities.Exception;
 
 namespace Bank

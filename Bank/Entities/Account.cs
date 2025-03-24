@@ -42,7 +42,10 @@ namespace Bank.Entities
             Balance -= amount;
         }
 
-        public abstract void Deposit(double amount);
+        public void Deposit(double amount)
+        {
+            Balance += amount;
+        }
 
 
         public void Transfer(double amount, Account account)

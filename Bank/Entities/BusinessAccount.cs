@@ -19,10 +19,6 @@ namespace Bank.Entities
         {
             LoanLimit = loanLimit;
         }
-        public override void Deposit(double amount)
-        {
-            Balance += amount;
-        }
 
         public override void Withdraw(double amount)
         {

@@ -18,10 +18,6 @@ namespace Bank.Entities
         public SavingAccount(string name, int number, double balance, string typeAccount) : base(name, number, balance, typeAccount)
         {
         }
-        public override void Deposit(double amount)
-        {
-            Balance += amount;
-        }
 
         public override void Withdraw(double amount)
         {
