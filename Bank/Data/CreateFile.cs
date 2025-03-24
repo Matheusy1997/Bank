@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using Bank.Entities;
 
-namespace Bank.Entities.Controllers
+namespace Bank.Data
 {
     internal class CreateFile
     {
@@ -35,16 +36,16 @@ namespace Bank.Entities.Controllers
             }
         }
 
-        public static void CreateFileTransactions(Account accountTransfer,Account accountReceive, double amount)
+        public static void CreateFileTransactions(Account accountTransfer, Account accountReceive, double amount)
         {
-            string origenPath = $@"C:\Users\Matheus\Documents\File\Bank\Account\{accountTransfer.Name+accountTransfer.NumberAccount}.txt";
+            string origenPath = $@"C:\Users\Matheus\Documents\File\Bank\Account\{accountTransfer.Name + accountTransfer.NumberAccount}.txt";
             using (StreamWriter sw = File.AppendText(origenPath))
             {
                 sw.WriteLine($"Date: {DateTime.Now};Amount: {amount.ToString("C", new CultureInfo("pt-br"))};Recipient: {accountReceive.Name}" +
                     $"; New Banlace: {accountTransfer.Balance}");
             }
 
-            string searchPath = $@"C:\Users\Matheus\Documents\File\Bank\Account\{accountReceive.Name+accountReceive.NumberAccount}.txt";
+            string searchPath = $@"C:\Users\Matheus\Documents\File\Bank\Account\{accountReceive.Name + accountReceive.NumberAccount}.txt";
             using (StreamWriter sw = File.AppendText(searchPath))
             {
                 sw.WriteLine($"Date: {DateTime.Now};Amount: {amount.ToString("C", new CultureInfo("pt-br"))};Transferred: {accountTransfer.Name}" +

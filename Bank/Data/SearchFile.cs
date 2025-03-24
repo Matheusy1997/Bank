@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using Bank.Entities;
 
-namespace Bank.Entities.Controllers
+namespace Bank.Data
 {
     internal class SearchFile
     {
@@ -25,7 +26,7 @@ namespace Bank.Entities.Controllers
                     string typeAccount = fields[4];
                     dictionaryAccount[number] = new BusinessAccount(name, number, balance, loanLimit, typeAccount);
                 }
-                else if(fields.Length >= 4 && fields[3].Trim().Equals("Savings", StringComparison.OrdinalIgnoreCase))
+                else if (fields.Length >= 4 && fields[3].Trim().Equals("Savings", StringComparison.OrdinalIgnoreCase))
                 {
                     string name = fields[0];
                     int number = int.Parse(fields[1]);

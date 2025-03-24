@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using Bank.Entities;
+using Bank.Data;
 
-namespace Bank.Entities.Controllers.Perform.Operation
+namespace Bank.Service
 {
     internal class Transfer
     {

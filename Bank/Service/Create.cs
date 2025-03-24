@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bank.Entities.Controllers.Perform.Operation;
+using Bank.Data;
+using Bank.Entities;
+using Bank.Controllers;
 using Bank.Entities.Exception;
 
-namespace Bank.Entities.Controllers
+namespace Bank.Service
 {
     internal class Create
     {
@@ -28,7 +30,7 @@ namespace Bank.Entities.Controllers
                     Console.Write("Write the account name: ");
                     nameAccount = Console.ReadLine();
 
-                    if (String.IsNullOrEmpty(nameAccount) || String.IsNullOrWhiteSpace(nameAccount))
+                    if (string.IsNullOrEmpty(nameAccount) || string.IsNullOrWhiteSpace(nameAccount))
                     {
                         throw new DomainException("Name is required");
                     }
@@ -42,7 +44,7 @@ namespace Bank.Entities.Controllers
                             BusinessAccount businessAccount = new BusinessAccount(nameAccount.Trim().ToUpper(),
                                     numberAccount, 500.00, "Business");
                             dictionaryAccount[numberAccount] = businessAccount;
-                            CreateFile.CreateFileAccounts(dictionaryAccount); 
+                            CreateFile.CreateFileAccounts(dictionaryAccount);
                             break;
                         }
                         continue;
@@ -53,7 +55,7 @@ namespace Bank.Entities.Controllers
                     Console.Write("Write the account name: ");
                     nameAccount = Console.ReadLine();
 
-                    if (String.IsNullOrEmpty(nameAccount) || String.IsNullOrWhiteSpace(nameAccount))
+                    if (string.IsNullOrEmpty(nameAccount) || string.IsNullOrWhiteSpace(nameAccount))
                     {
                         throw new DomainException("Name is required");
                     }
@@ -75,7 +77,7 @@ namespace Bank.Entities.Controllers
                     }
                     break;
                 default:
-                    if (String.IsNullOrEmpty(accountTypeInput) || String.IsNullOrWhiteSpace(accountTypeInput)
+                    if (string.IsNullOrEmpty(accountTypeInput) || string.IsNullOrWhiteSpace(accountTypeInput)
                         || accountTypeInput.ToLower() != "business" || accountTypeInput.ToLower() != "savings")
                     {
                         Console.WriteLine("Type account invalid!");

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bank.Entities.Controllers.Perform.Operation;
+using Bank.Controllers;
+using Bank.Entities;
 
-namespace Bank.Entities.Controllers.Perform
+namespace Bank.Service
 {
     internal class PerformBusinessAccount
     {
@@ -19,7 +20,7 @@ namespace Bank.Entities.Controllers.Perform
                 Console.WriteLine("4: UpdateLoanLimit");
                 Console.WriteLine("5: Transfer");
                 Console.Write("Choose a service: ");
-                
+
                 int service = int.Parse(Console.ReadLine());
                 switch (service)
                 {

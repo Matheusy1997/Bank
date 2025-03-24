@@ -4,13 +4,14 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bank.Entities.Controllers.Perform.Operation;
+using Bank.Controllers;
+using Bank.Entities;
 
-namespace Bank.Entities.Controllers.Perform
+namespace Bank.Service
 {
     internal class PerformSavingsAccount
     {
-        public static void PerformSavingsAccountOperation(Dictionary<int, Account> dictionaryAccount,SavingAccount savingAccount)
+        public static void PerformSavingsAccountOperation(Dictionary<int, Account> dictionaryAccount, SavingAccount savingAccount)
         {
             while (true)
             {

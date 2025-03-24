@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bank.Entities.Controllers.Perform;
+using Bank.Data;
+using Bank.Entities;
+using Bank.Service;
 
-namespace Bank.Entities.Controllers.Option
+namespace Bank.Controllers
 {
     internal class Option
     {
