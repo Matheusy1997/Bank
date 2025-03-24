@@ -25,7 +25,7 @@ namespace Bank.Service
                 switch (service)
                 {
                     case 1:
-                        Deposit.PerformDeposit(savingAccount);
+                        Deposit.PerformDeposit(savingAccount, new ConsoleMessageService());
                         break;
                     case 2:
                         Withdraw.PerformWithdraw(savingAccount);
