@@ -15,7 +15,7 @@ namespace Bank.Service
         {
             while (true)
             {
-                Console.Write("1: Deposit");
+                Console.WriteLine("1: Deposit");
                 Console.WriteLine("2: Withdraw");
                 Console.WriteLine("3: UpdateBalance");
                 Console.WriteLine("4: Transfer");
