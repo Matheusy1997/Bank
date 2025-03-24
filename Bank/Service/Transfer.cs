@@ -6,30 +6,34 @@ using System.Threading.Tasks;
 using System.Globalization;
 using Bank.Entities;
 using Bank.Data;
+using Bank.Interfaces;
 
 namespace Bank.Service
 {
     internal class Transfer
     {
-        public static void TransferAccount(Dictionary<int, Account> dictionaryAccount, Account account)
+        public static void TransferAccount(Dictionary<int, Account> dictionaryAccount, Account account, IMessageService messageService)
         {
 
             Console.Write("Enter the amount to transfer: R$ ");
-            double amount = double.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
 
             Console.Write("Enter the account number to receive the transfer: ");
             int numberAccountReceive = int.Parse(Console.ReadLine());
+
+            ValidateService.ValidateAccount(dictionaryAccount, numberAccountReceive);
+
             Account accountReceive = dictionaryAccount[numberAccountReceive];
-            if (accountReceive != null)
-            {
-                account.Transfer(amount, accountReceive);
-                CreateFile.CreateFileTransactions(account, accountReceive, amount);
-                CreateFile.CreateFileAccounts(dictionaryAccount);
-            }
-            else
-            {
-                Console.WriteLine("Account not found");
-            }
+            
+            ValidateService.ValidateTransfer(input, account, accountReceive);
+
+            double amount = double.Parse(input);
+
+            account.Transfer(amount, accountReceive);
+
+            messageService.ShowTransferMessage(account, accountReceive, amount);
+
+            CreateFile.CreateFileTransactions(account, accountReceive, amount);
             CreateFile.CreateFileAccounts(dictionaryAccount);
         }
     }

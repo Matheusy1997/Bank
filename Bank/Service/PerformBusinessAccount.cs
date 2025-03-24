@@ -37,7 +37,7 @@ namespace Bank.Service
                         UpdateLoanLimit.PerformUpdateLoanLimit(businessAccount);
                         break;
                     case 5:
-                        Transfer.TransferAccount(dictionaryAccount, businessAccount);
+                        Transfer.TransferAccount(dictionaryAccount, businessAccount, new ConsoleMessageService());
                         break;
                     default:
                         Console.WriteLine("Invalid service");

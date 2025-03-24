@@ -36,7 +36,7 @@ namespace Bank.Service
                             $"{savingAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
                         break;
                     case 4:
-                        Transfer.TransferAccount(dictionaryAccount, savingAccount);
+                        Transfer.TransferAccount(dictionaryAccount, savingAccount, new ConsoleMessageService());
                         break;
                     default:
                         Console.WriteLine("Invalid service");
