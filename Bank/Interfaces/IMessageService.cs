@@ -10,5 +10,6 @@ namespace Bank.Interfaces
     internal interface IMessageService
     {
         void ShowTransferMessage(Account originAccount, Account destinationAccount, double amount);
+        void ShowDepositMessage(Account originAccount, double amount);
     }
 }

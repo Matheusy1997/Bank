@@ -11,14 +11,23 @@ namespace Bank.Service
 {
     internal class ConsoleMessageService : IMessageService
     {
+        public void ShowDepositMessage(Account originAccount, double amount)
+        {
+            Console.WriteLine($"Deposit made successfully!");
+            Console.WriteLine($"Date: {DateTime.Now}");
+            Console.WriteLine($"Amount: {amount.ToString("C", new CultureInfo("pt-br"))}");
+            Console.WriteLine($"Origin account: {originAccount.NumberAccount}");
+            Console.WriteLine($"New Balance: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
+        }
+
         public void ShowTransferMessage(Account originAccount, Account destinationAccount, double amount)
         {
-            Console.WriteLine($"Transferência realizada com sucesso!");
-            Console.WriteLine($"Data: {DateTime.Now}");
-            Console.WriteLine($"Valor: {amount.ToString("C", new CultureInfo("pt-br"))}");
-            Console.WriteLine($"Conta de origem: {originAccount.NumberAccount}");
-            Console.WriteLine($"Conta de destino: {destinationAccount.NumberAccount}");
-            Console.WriteLine($"Novo saldo: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
+            Console.WriteLine($"Transfer made successfully!");
+            Console.WriteLine($"Date: {DateTime.Now}");
+            Console.WriteLine($"Amount: {amount.ToString("C", new CultureInfo("pt-br"))}");
+            Console.WriteLine($"Origin Account: {originAccount.NumberAccount}");
+            Console.WriteLine($"Destination Account: {destinationAccount.NumberAccount}");
+            Console.WriteLine($"New Balance: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
         }
     }
 }
