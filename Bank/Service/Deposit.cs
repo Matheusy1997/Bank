@@ -12,9 +12,8 @@ namespace Bank.Service
     {
         public static void PerformDeposit(Account account)
         {
-            Console.Write("Enter the amount to deposit: R$ ");
-            double amount = double.Parse(Console.ReadLine());
-            account.Deposit(amount);
+            ConsoleDepositInput input = new ConsoleDepositInput();
+            account.Deposit(double.Parse(input.GetDeposit()));
             Console.WriteLine($"New balance: {account.Balance.ToString("C", new CultureInfo("pt-br"))}");
         }
     }

@@ -41,5 +41,19 @@ namespace Bank.Service
                 throw new ArgumentException("Insufficient balanace");
             }
         }
+
+        public static void ValidateAmount(string input)
+        {
+            double amount = 0;
+            if (!double.TryParse(input, out amount))
+            {
+                throw new ArgumentException("Invalid input. Please enter a number");
+            }
+
+            if (amount < 0)
+            {
+                throw new ArgumentException("Amount must be greater than zero.");
+            }
+        }
     }
 }
