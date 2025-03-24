@@ -28,7 +28,7 @@ namespace Bank.Service
                         Deposit.PerformDeposit(savingAccount, new ConsoleMessageService());
                         break;
                     case 2:
-                        Withdraw.PerformWithdraw(savingAccount);
+                        Withdraw.PerformWithdraw(savingAccount, new ConsoleMessageService());
                         break;
                     case 3:
                         savingAccount.UpdateBalance();

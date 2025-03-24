@@ -34,11 +34,6 @@ namespace Bank.Entities
 
         public virtual void Withdraw(double amount)
         {
-            if (amount > Balance)
-            {
-                throw new ArgumentException("Insufficient balance");
-            }
-
             Balance -= amount;
         }
 

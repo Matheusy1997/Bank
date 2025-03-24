@@ -28,7 +28,7 @@ namespace Bank.Service
                         Deposit.PerformDeposit(businessAccount, new ConsoleMessageService());
                         break;
                     case 2:
-                        Withdraw.PerformWithdraw(businessAccount);
+                        Withdraw.PerformWithdraw(businessAccount, new ConsoleMessageService());
                         break;
                     case 3:
                         Loan.PerformLoan(businessAccount, new ConsoleMessageService());

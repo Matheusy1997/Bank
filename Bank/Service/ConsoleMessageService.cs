@@ -39,5 +39,14 @@ namespace Bank.Service
             Console.WriteLine($"Destination Account: {destinationAccount.NumberAccount}");
             Console.WriteLine($"New Balance: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
         }
+
+        public void ShowWithdrawrMessage(Account originAccount, double amount)
+        {
+            Console.WriteLine($"Withdraw made successfully!");
+            Console.WriteLine($"Date: {DateTime.Now}");
+            Console.WriteLine($"Amount: {amount.ToString("C", new CultureInfo("pt-br"))}");
+            Console.WriteLine($"Origin Account: {originAccount.NumberAccount}");
+            Console.WriteLine($"New Balance: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
+        }
     }
 }

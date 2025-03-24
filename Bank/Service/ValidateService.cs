@@ -22,51 +22,61 @@ namespace Bank.Service
                 throw new ArgumentException("Destination account not found!");
             }
         }
-        public static void ValidateTransfer(string input, Account origenAccount, Account destinationAccount)
+
+        public static void ValidateTransfer(string input, Account originAccount, Account destinationAccount)
         {
-            double amount = 0;
+            double amount = ParseDouble(input);
 
-            if(!double.TryParse(input, out amount))
-            {
-                throw new ArgumentException("Invalid input. Please enter a number");
-            }
+            ValidateAmountGreaterThanZero(amount);
 
-            if(amount < 0)
-            {
-                throw new ArgumentException("Amount must be greater than zero.");
-            }
-
-            if(amount > origenAccount.Balance)
-            {
-                throw new ArgumentException("Insufficient balanace");
-            }
+            ValidateSufficientBalance(originAccount, amount);
         }
 
         public static void ValidateAmount(string input)
         {
-            double amount = 0;
-            if (!double.TryParse(input, out amount))
-            {
-                throw new ArgumentException("Invalid input. Please enter a number");
-            }
+            double amount = ParseDouble(input);
 
-            if (amount < 0)
-            {
-                throw new ArgumentException("Amount must be greater than zero.");
-            }
+            ValidateAmountGreaterThanZero(amount);
         }
 
         public static void ValidateLoan(BusinessAccount businessAccount, string input)
         {
             double amount = 0;
-            if(!double.TryParse(input, out amount))
-            {
-                throw new ArgumentException("Invalid input. Please enter a number");
-            }
 
             if (amount > businessAccount.LoanLimit)
             {
                 throw new ArgumentException("Loan amount exceeds the limit");
+            }
+        }
+
+        public static void ValidateWithdraw(Account account, string input)
+        {
+           double amount =  ParseDouble(input);
+            ValidateAmountGreaterThanZero(amount);
+            ValidateSufficientBalance(account, amount);
+        }
+
+        private static double ParseDouble(string input)
+        {
+            double result = 0;
+            if(!double.TryParse(input, out result))
+            {
+                throw new ArgumentException("Invalid input. Please enter a number");
+            }
+            return result;
+        }
+        private static void ValidateSufficientBalance(Account originAccount, double amount)
+        {
+            if (amount > originAccount.Balance)
+            {
+                throw new ArgumentException("Insufficient balanace");
+            }
+        }
+        private static void ValidateAmountGreaterThanZero(double amount)
+        {
+            if (amount < 0)
+            {
+                throw new ArgumentException("Amount must be greater than zero.");
             }
         }
     }
