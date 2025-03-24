@@ -15,16 +15,16 @@ namespace Bank.Service
         public static void TransferAccount(Dictionary<int, Account> dictionaryAccount, Account account, IMessageService messageService)
         {
 
-            Console.Write("Enter the amount to transfer: R$ ");
-            string input = Console.ReadLine();
+            ConsoleTransferInput consoleTransferInput = new ConsoleTransferInput();
 
-            Console.Write("Enter the account number to receive the transfer: ");
-            int numberAccountReceive = int.Parse(Console.ReadLine());
+            int numberAccountReceive = consoleTransferInput.GetNumberAccount();
 
             ValidateService.ValidateAccount(dictionaryAccount, numberAccountReceive);
 
             Account accountReceive = dictionaryAccount[numberAccountReceive];
-            
+
+            string input = consoleTransferInput.GetAmount();
+
             ValidateService.ValidateTransfer(input, account, accountReceive);
 
             double amount = double.Parse(input);
