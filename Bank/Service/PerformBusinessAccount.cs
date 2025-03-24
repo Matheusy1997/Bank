@@ -31,7 +31,7 @@ namespace Bank.Service
                         Withdraw.PerformWithdraw(businessAccount);
                         break;
                     case 3:
-                        Loan.PerformLoan(businessAccount);
+                        Loan.PerformLoan(businessAccount, new ConsoleMessageService());
                         break;
                     case 4:
                         UpdateLoanLimit.PerformUpdateLoanLimit(businessAccount);

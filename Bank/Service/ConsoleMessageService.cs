@@ -20,6 +20,16 @@ namespace Bank.Service
             Console.WriteLine($"New Balance: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
         }
 
+        public void ShowLoanMessage(BusinessAccount originAccount, double amount)
+        {
+            Console.WriteLine($"Loan made successfully!");
+            Console.WriteLine($"Date: {DateTime.Now}");
+            Console.WriteLine($"Amount: {amount.ToString("C", new CultureInfo("pt-br"))}");
+            Console.WriteLine($"Origin account: {originAccount.NumberAccount}");
+            Console.WriteLine($"New Balance: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
+            Console.WriteLine($"New Loan Limit: {originAccount.LoanLimit.ToString("C", new CultureInfo("pt-br"))}");
+        }
+
         public void ShowTransferMessage(Account originAccount, Account destinationAccount, double amount)
         {
             Console.WriteLine($"Transfer made successfully!");

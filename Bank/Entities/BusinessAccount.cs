@@ -27,19 +27,8 @@ namespace Bank.Entities
 
         public void Loan(double amount)
         {
-            if (amount <= LoanLimit)
-            {
-                Balance += amount;
-                LoanLimit -= amount;
-                Console.WriteLine($"Loaned R$ {amount}. " +
-                    $"New balance: {Balance.ToString("C", new CultureInfo("pt-br"))}" +
-                    $". New LoanLimit {LoanLimit.ToString("C", new CultureInfo("pt-br"))}");
-            }
-            else if (amount > LoanLimit)
-            {
-                Console.WriteLine("Loan amount exceeds the limit");
-            }
-            
+            Balance += amount;
+            LoanLimit -= amount;
         }
 
         public void UpdateLoanLimited(double amount)

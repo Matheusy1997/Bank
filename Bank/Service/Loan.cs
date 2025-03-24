@@ -1,4 +1,5 @@
 ﻿using Bank.Entities;
+using Bank.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,14 @@ namespace Bank.Service
 {
     internal class Loan
     {
-        public static void PerformLoan(BusinessAccount businessAccount)
+        public static void PerformLoan(BusinessAccount businessAccount, IMessageService messageService)
         {
-            Console.Write("Enter the amount to loan: R$ ");
-            double amount = double.Parse(Console.ReadLine());
+            ConsoleLoanInput consoleLoanInput = new ConsoleLoanInput();
+            string input = consoleLoanInput.GetAmount();
+            ValidateService.ValidateLoan(businessAccount, input);
+            double amount = double.Parse(input);
             businessAccount.Loan(amount);
+            messageService.ShowLoanMessage(businessAccount, amount);
         }
     }
 }

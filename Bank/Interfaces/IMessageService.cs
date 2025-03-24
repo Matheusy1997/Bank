@@ -11,5 +11,6 @@ namespace Bank.Interfaces
     {
         void ShowTransferMessage(Account originAccount, Account destinationAccount, double amount);
         void ShowDepositMessage(Account originAccount, double amount);
+        void ShowLoanMessage(BusinessAccount originAccount, double amount);
     }
 }

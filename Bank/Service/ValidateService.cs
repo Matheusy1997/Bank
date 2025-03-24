@@ -55,5 +55,19 @@ namespace Bank.Service
                 throw new ArgumentException("Amount must be greater than zero.");
             }
         }
+
+        public static void ValidateLoan(BusinessAccount businessAccount, string input)
+        {
+            double amount = 0;
+            if(!double.TryParse(input, out amount))
+            {
+                throw new ArgumentException("Invalid input. Please enter a number");
+            }
+
+            if (amount > businessAccount.LoanLimit)
+            {
+                throw new ArgumentException("Loan amount exceeds the limit");
+            }
+        }
     }
 }
