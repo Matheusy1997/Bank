@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Bank.Service
 {
-    internal class ConsoleDepositInput : IDepositInput
+    internal class ConsoleDepositInput : IAmountInput
     {
-        public string GetDeposit()
+        public string GetAmount()
         {
             Console.Write("Enter the amount to deposit: R$ ");
             string amount = Console.ReadLine();

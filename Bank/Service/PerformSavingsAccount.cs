@@ -32,8 +32,6 @@ namespace Bank.Service
                         break;
                     case 3:
                         savingAccount.UpdateBalance();
-                        Console.WriteLine($"Update balance: " +
-                            $"{savingAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
                         break;
                     case 4:
                         Transfer.TransferAccount(dictionaryAccount, savingAccount, new ConsoleMessageService());
