@@ -21,19 +21,17 @@ namespace Bank.Service
 
             ValidateService.ValidateAccount(dictionaryAccount, numberAccountReceive);
 
-            Account accountReceive = dictionaryAccount[numberAccountReceive];
-
             string input = consoleTransferInput.GetAmount();
 
-            ValidateService.ValidateTransfer(input, account, accountReceive);
+            ValidateService.ValidateTransfer(input, account, dictionaryAccount[int.Parse(numberAccountReceive)]);
 
             double amount = double.Parse(input);
 
-            account.Transfer(amount, accountReceive);
+            account.Transfer(amount, dictionaryAccount[int.Parse(numberAccountReceive)]);
 
-            messageService.ShowTransferMessage(account, accountReceive, amount);
+            messageService.ShowTransferMessage(account, dictionaryAccount[int.Parse(numberAccountReceive)], amount);
 
-            CreateFile.CreateFileTransactions(account, accountReceive, amount);
+            CreateFile.CreateFileTransactions(account, dictionaryAccount[int.Parse(numberAccountReceive)], amount);
             CreateFile.CreateFileAccounts(dictionaryAccount);
         }
     }
