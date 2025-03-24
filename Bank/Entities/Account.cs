@@ -50,16 +50,8 @@ namespace Bank.Entities
 
         public void Transfer(double amount, Account account)
         {
-            if (amount > Balance)
-            {
-                throw new ArgumentException("Insufficient balance");
-            }
             Balance -= amount;
             account.Deposit(amount);
-            Console.WriteLine("Date: " + DateTime.Now + ", " 
-                + "Value: " +  amount.ToString("C", new CultureInfo("pt-br")) + ", "
-                + "Recipient: " + account.Name + ", "
-                + "New Balance: " + Balance.ToString("C", new CultureInfo("pt-br")));
         }
         public int CompareTo(Account obj)
         {
