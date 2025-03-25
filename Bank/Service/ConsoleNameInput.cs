@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 
 namespace Bank.Service
 {
-    internal class ConsoleNameInput : INameInput
+    internal class ConsoleNameInput : INameOut
     {
-        public string GetName(string typeAccount)
+        public void OutName(string typeAccount)
         {
             Console.WriteLine($"Type Account: {typeAccount}");
             Console.Write("Write the account name: ");
-            return Console.ReadLine();
         }
 
-        public string GetTypeAccount()
+        public void OutTypeAccount()
         {
             Console.WriteLine("What type of account to register?");
             Console.Write("Business or Savings: ");
-            return Console.ReadLine();
         }
     }
 }

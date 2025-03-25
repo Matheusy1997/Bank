@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Bank.Interfaces
 {
-    internal interface ITransferInput
+    internal interface IOutString
     {
-        string GetAmount();
-        string GetNumberAccount();
+        void OutString();
     }
 }

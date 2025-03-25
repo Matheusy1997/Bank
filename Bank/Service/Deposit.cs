@@ -14,7 +14,8 @@ namespace Bank.Service
         public static void PerformDeposit(Account account, IMessageService messageService)
         {
             ConsoleDepositInput depositInput = new ConsoleDepositInput();
-            string input = depositInput.GetAmount();
+            depositInput.OutString();
+            string input = InputHandler.GetInput();
             ValidateService.ValidateAmount(input);
             double amount = double.Parse(input);
             account.Deposit(amount);

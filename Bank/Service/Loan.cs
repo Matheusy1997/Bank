@@ -13,7 +13,8 @@ namespace Bank.Service
         public static void PerformLoan(BusinessAccount businessAccount, IMessageService messageService)
         {
             ConsoleLoanInput consoleLoanInput = new ConsoleLoanInput();
-            string input = consoleLoanInput.GetAmount();
+            consoleLoanInput.OutString();
+            string input = InputHandler.GetInput();
             ValidateService.ValidateLoan(businessAccount, input);
             double amount = double.Parse(input);
             businessAccount.Loan(amount);

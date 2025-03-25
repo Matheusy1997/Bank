@@ -7,20 +7,16 @@ using System.Threading.Tasks;
 
 namespace Bank.Service
 {
-    internal class ConsoleTransferInput : ITransferInput
+    internal class ConsoleTransferInput : ITransferOut
     {
-        public string GetAmount()
+        public void OutAmount()
         {
             Console.Write("Enter the amount to transfer: R$ ");
-            string input = Console.ReadLine();
-            return input;
         }
 
-        public string GetNumberAccount()
+        public void OutNumberAccount()
         {
             Console.Write("Enter the account number to receive the transfer: ");
-            string numberAccountReceive = Console.ReadLine();
-            return numberAccountReceive;
         }
     }
 }

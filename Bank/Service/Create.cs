@@ -14,8 +14,8 @@ namespace Bank.Service
         public static void CreateAccount(Dictionary<int, Account> dictionaryAccount)
         {
             ConsoleNameInput nameInput = new ConsoleNameInput();
-
-            string accountTypeInput = nameInput.GetTypeAccount();
+            nameInput.OutTypeAccount();
+            string accountTypeInput = InputHandler.GetInput();
             Console.WriteLine();
 
             string nameAccount;
@@ -24,7 +24,8 @@ namespace Bank.Service
             {
                 case "business":
                     ConsoleMessageService messageService = new ConsoleMessageService();
-                    nameAccount = nameInput.GetName(accountTypeInput);
+                    nameInput.OutName(accountTypeInput);
+                    nameAccount = InputHandler.GetInput();
 
                     ValidateService.ValidateNameAccount(nameAccount);
 
@@ -40,7 +41,8 @@ namespace Bank.Service
                 case "savings":
                     messageService = new ConsoleMessageService();
 
-                    nameAccount = nameInput.GetName(accountTypeInput);
+                    nameInput.OutName(accountTypeInput);
+                    nameAccount = InputHandler.GetInput();
 
                     ValidateService.ValidateNameAccount(nameAccount);
 

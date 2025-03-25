@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Bank.Service
 {
-    internal class ConsoleLoanInput : IAmountInput
+    internal class ConsoleLoanInput : IOutString
     {
-        public string GetAmount()
+        public void OutString()
         {
             Console.Write("Enter the amount to loan: R$ ");
-            string input = Console.ReadLine();
-            return input;
         }
     }
 }

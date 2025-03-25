@@ -1,6 +1,7 @@
 ﻿using Bank.Controllers;
 using Bank.Data;
 using Bank.Entities;
+using Bank.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Bank.Service
         public delegate void BusinessOperation(Dictionary<int, Account> accounts, BusinessAccount businessAccount);
         public delegate void SavingsOperation(Dictionary<int, Account> accounts, SavingAccount savingsAccount);
         public delegate void MenuOption(Dictionary<int, Account> accounts);
+        public delegate void ConsoleOutput(ConsoleMessageService messageService);
 
         public static Dictionary<int, BusinessOperation> BusinessOperations = new Dictionary<int, BusinessOperation>
         {

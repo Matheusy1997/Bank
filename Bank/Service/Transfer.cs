@@ -16,12 +16,12 @@ namespace Bank.Service
         {
 
             ConsoleTransferInput consoleTransferInput = new ConsoleTransferInput();
-
-            string numberAccountReceive = consoleTransferInput.GetNumberAccount();
+            consoleTransferInput.OutNumberAccount();
+            string numberAccountReceive = InputHandler.GetInput();
 
             ValidateService.ValidateAccount(dictionaryAccount, numberAccountReceive);
-
-            string input = consoleTransferInput.GetAmount();
+            consoleTransferInput.OutAmount();
+            string input = InputHandler.GetInput();
 
             ValidateService.ValidateTransfer(input, account, dictionaryAccount[int.Parse(numberAccountReceive)]);
 

@@ -13,7 +13,8 @@ namespace Bank.Service
         public static void PerformWithdraw(Account account, IMessageService messageService)
         {
             ConsoleWithdrawInput withdrawInput = new ConsoleWithdrawInput();
-            string input = withdrawInput.GetAmount();
+            withdrawInput.OutString();
+            string input = InputHandler.GetInput();
             ValidateService.ValidateWithdraw(account, input);
             double amount = double.Parse(input);
             account.Withdraw(amount);

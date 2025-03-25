@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Bank.Service
 {
-    internal class ConsoleWithdrawInput : IOutString
+    internal class InputHandler
     {
-        public void OutString()
+        public static string GetInput()
         {
-            Console.Write("Enter the amount to withdraw: R$ ");
+            return Console.ReadLine();
         }
     }
 }
