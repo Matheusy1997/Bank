@@ -11,6 +11,16 @@ namespace Bank.Service
 {
     internal class ConsoleMessageService : IMessageService
     {
+        public void ShowBusinessAccountOperation()
+        {
+            Console.WriteLine("1: Deposit");
+            Console.WriteLine("2: Withdraw");
+            Console.WriteLine("3: Loan");
+            Console.WriteLine("4: UpdateLoanLimit");
+            Console.WriteLine("5: Transfer");
+            Console.Write("Choose a service: ");
+        }
+
         public void ShowCreateAccountMessage(Account account)
         {
             Console.WriteLine();
@@ -53,6 +63,15 @@ namespace Bank.Service
             Console.WriteLine("3. List All Accounts");
             Console.WriteLine("4. Delet Account");
             Console.WriteLine("5. Out");
+            Console.Write("Choose a service: ");
+        }
+
+        public void ShowSavingsAccountOperation()
+        {
+            Console.WriteLine("1: Deposit");
+            Console.WriteLine("2: Withdraw");
+            Console.WriteLine("3: UpdateBalance");
+            Console.WriteLine("4: Transfer");
             Console.Write("Choose a service: ");
         }
 

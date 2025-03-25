@@ -17,7 +17,7 @@ namespace Bank
                 
                 SearchFile.SearchFileAccount(dictionaryAccount);
 
-                Option.OptionMenu(dictionaryAccount, BankDelegate.MenuOperations);
+                Option.OptionMenu(dictionaryAccount, BankDelegate.MenuOperations, new ConsoleMessageService());
 
                 
             }

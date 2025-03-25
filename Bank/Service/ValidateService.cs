@@ -77,7 +77,7 @@ namespace Bank.Service
             }
         }
 
-        public static void ValidateKey(Dictionary<int, BankDelegate.MenuOption> dictionary, int input)
+        public static void ValidateKey<T>(Dictionary<int, T> dictionary, int input)
         {
             if(!dictionary.ContainsKey(input))
             {

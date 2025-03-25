@@ -6,40 +6,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Bank.Controllers;
 using Bank.Entities;
+using Bank.Interfaces;
 
 namespace Bank.Service
 {
     internal class PerformSavingsAccount
     {
-        public static void PerformSavingsAccountOperation(Dictionary<int, Account> dictionaryAccount, SavingAccount savingAccount)
+        public static void PerformSavingsAccountOperation(Dictionary<int, Account> dictionaryAccount, 
+            SavingAccount savingAccount, Dictionary<int, BankDelegate.SavingsOperation> operation, IMessageService messageService)
         {
             while (true)
             {
-                Console.WriteLine("1: Deposit");
-                Console.WriteLine("2: Withdraw");
-                Console.WriteLine("3: UpdateBalance");
-                Console.WriteLine("4: Transfer");
-                Console.Write("Choose a service: ");
-                int service = int.Parse(Console.ReadLine());
+                messageService.ShowSavingsAccountOperation();
 
-                switch (service)
-                {
-                    case 1:
-                        Deposit.PerformDeposit(savingAccount, new ConsoleMessageService());
-                        break;
-                    case 2:
-                        Withdraw.PerformWithdraw(savingAccount, new ConsoleMessageService());
-                        break;
-                    case 3:
-                        savingAccount.UpdateBalance();
-                        break;
-                    case 4:
-                        Transfer.TransferAccount(dictionaryAccount, savingAccount, new ConsoleMessageService());
-                        break;
-                    default:
-                        Console.WriteLine("Invalid service");
-                        break;
-                }
+                int service = ValidateService.ParseInt(InputHandler.GetInput());
+
+                ValidateService.ValidateKey(operation, service);
+
+                operation[service](dictionaryAccount, savingAccount);
 
                 if (!Continue.ContinueOperation()) break;
 

@@ -15,5 +15,7 @@ namespace Bank.Interfaces
         void ShowWithdrawrMessage(Account originAccount, double amount);
         void ShowCreateAccountMessage(Account account);
         void ShowMenuOption();
+        void ShowSavingsAccountOperation();
+        void ShowBusinessAccountOperation();
     }
 }

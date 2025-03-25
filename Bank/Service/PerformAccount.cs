@@ -19,12 +19,14 @@ namespace Bank.Service
             {
                 if (accountNumber is BusinessAccount businessAccount)
                 {
-                    PerformBusinessAccount.PerformBusinessAccountOperation(dictionaryAccount, businessAccount);
+                    PerformBusinessAccount.PerformBusinessAccountOperation(dictionaryAccount, businessAccount, 
+                        BankDelegate.BusinessOperations, new ConsoleMessageService());
 
                 }
                 else if (accountNumber is SavingAccount savingAccount)
                 {
-                    PerformSavingsAccount.PerformSavingsAccountOperation(dictionaryAccount, savingAccount);
+                    PerformSavingsAccount.PerformSavingsAccountOperation(dictionaryAccount, savingAccount, 
+                        BankDelegate.SavingsOperations, new ConsoleMessageService());
 
                 }
                 else
