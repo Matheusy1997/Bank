@@ -23,7 +23,7 @@ namespace Bank.Service
             switch (accountTypeInput.ToLower())
             {
                 case "business":
-
+                    ConsoleMessageService messageService = new ConsoleMessageService();
                     nameAccount = nameInput.GetName(accountTypeInput);
 
                     ValidateService.ValidateNameAccount(nameAccount);
@@ -34,10 +34,11 @@ namespace Bank.Service
                             numberAccount, 500.00, "Business");
 
                     dictionaryAccount[numberAccount] = businessAccount;
-
+                    messageService.ShowCreateAccountMessage(businessAccount);
                     CreateFile.CreateFileAccounts(dictionaryAccount);
                     break;
                 case "savings":
+                    messageService = new ConsoleMessageService();
 
                     nameAccount = nameInput.GetName(accountTypeInput);
 
@@ -49,6 +50,8 @@ namespace Bank.Service
                             numberAccount, "Savings");
 
                     dictionaryAccount[numberAccount] = savingAccount;
+
+                    messageService.ShowCreateAccountMessage(savingAccount);
 
                     CreateFile.CreateFileAccounts(dictionaryAccount);
 
