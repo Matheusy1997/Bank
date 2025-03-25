@@ -13,9 +13,8 @@ namespace Bank.Service
     {
         public static void CreateAccount(Dictionary<int, Account> dictionaryAccount)
         {
-            Random random = new Random();
             ConsoleNameInput nameInput = new ConsoleNameInput();
-            
+
             string accountTypeInput = nameInput.GetTypeAccount();
             Console.WriteLine();
 
@@ -24,25 +23,19 @@ namespace Bank.Service
             switch (accountTypeInput.ToLower())
             {
                 case "business":
-                    
+
                     nameAccount = nameInput.GetName(accountTypeInput);
 
                     ValidateService.ValidateNameAccount(nameAccount);
 
-                    while (true)
-                    {
-                        int numberAccount = random.Next(100000, 200000);
+                    int numberAccount = GenerateNumber.UniqueAccountNumber(dictionaryAccount);
 
-                        if (!dictionaryAccount.ContainsKey(numberAccount))
-                        {
-                            BusinessAccount businessAccount = new BusinessAccount(nameAccount.Trim().ToUpper(),
-                                    numberAccount, 500.00, "Business");
-                            dictionaryAccount[numberAccount] = businessAccount;
-                            CreateFile.CreateFileAccounts(dictionaryAccount);
-                            break;
-                        }
-                        continue;
-                    }
+                    BusinessAccount businessAccount = new BusinessAccount(nameAccount.Trim().ToUpper(),
+                            numberAccount, 500.00, "Business");
+
+                    dictionaryAccount[numberAccount] = businessAccount;
+
+                    CreateFile.CreateFileAccounts(dictionaryAccount);
                     break;
                 case "savings":
 
@@ -50,21 +43,15 @@ namespace Bank.Service
 
                     ValidateService.ValidateNameAccount(nameAccount);
 
-                    while (true)
-                    {
-                        int numberAccount = random.Next(100000, 200000);
+                    numberAccount = GenerateNumber.UniqueAccountNumber(dictionaryAccount);
 
+                    SavingAccount savingAccount = new SavingAccount(nameAccount.Trim().ToUpper(),
+                            numberAccount, "Savings");
 
-                        if (!dictionaryAccount.ContainsKey(numberAccount))
-                        {
-                            SavingAccount savingAccount = new SavingAccount(nameAccount.Trim().ToUpper(),
-                                    numberAccount, "Savings");
-                            dictionaryAccount[numberAccount] = savingAccount;
-                            CreateFile.CreateFileAccounts(dictionaryAccount);
-                            break;
-                        }
-                        continue;
-                    }
+                    dictionaryAccount[numberAccount] = savingAccount;
+
+                    CreateFile.CreateFileAccounts(dictionaryAccount);
+
                     break;
                 default:
                     ValidateService.ValidateTypeAccount(accountTypeInput);
