@@ -11,10 +11,9 @@ namespace Bank.Service
 {
     internal class Deposit
     {
-        public static void PerformDeposit(Account account, IMessageService messageService)
+        public static void PerformDeposit(Account account, IMessageService messageService, IOutString outString)
         {
-            ConsoleDepositInput depositInput = new ConsoleDepositInput();
-            depositInput.OutString();
+            outString.OutString();
             string input = InputHandler.GetInput();
             ValidateService.ValidateAmount(input);
             double amount = double.Parse(input);

@@ -77,7 +77,23 @@ namespace Bank.Service
             }
         }
 
+        public static void ValidateKey(Dictionary<int, BankDelegate.MenuOption> dictionary, int input)
+        {
+            if(!dictionary.ContainsKey(input))
+            {
+                throw new DomainException("Service not found");
+            }
+        }
+        public static int ParseInt(string input)
+        {
+            int result = 0;
 
+            if(!int.TryParse(input, out result))
+            {
+                throw new ArgumentException("Invalid input. Please enter a number");
+            }
+            return result;
+        }
         private static double ParseDouble(string input)
         {
             double result = 0;

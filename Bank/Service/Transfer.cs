@@ -12,15 +12,13 @@ namespace Bank.Service
 {
     internal class Transfer
     {
-        public static void TransferAccount(Dictionary<int, Account> dictionaryAccount, Account account, IMessageService messageService)
-        {
-
-            ConsoleTransferInput consoleTransferInput = new ConsoleTransferInput();
-            consoleTransferInput.OutNumberAccount();
+        public static void TransferAccount(Dictionary<int, Account> dictionaryAccount, Account account, IMessageService messageService, ITransferOut transferOut)
+        {          
+            transferOut.OutNumberAccount();
             string numberAccountReceive = InputHandler.GetInput();
 
             ValidateService.ValidateAccount(dictionaryAccount, numberAccountReceive);
-            consoleTransferInput.OutAmount();
+            transferOut.OutAmount();
             string input = InputHandler.GetInput();
 
             ValidateService.ValidateTransfer(input, account, dictionaryAccount[int.Parse(numberAccountReceive)]);

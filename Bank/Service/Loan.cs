@@ -10,10 +10,9 @@ namespace Bank.Service
 {
     internal class Loan
     {
-        public static void PerformLoan(BusinessAccount businessAccount, IMessageService messageService)
+        public static void PerformLoan(BusinessAccount businessAccount, IMessageService messageService, IOutString outString)
         {
-            ConsoleLoanInput consoleLoanInput = new ConsoleLoanInput();
-            consoleLoanInput.OutString();
+            outString.OutString();
             string input = InputHandler.GetInput();
             ValidateService.ValidateLoan(businessAccount, input);
             double amount = double.Parse(input);

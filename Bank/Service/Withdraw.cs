@@ -10,10 +10,9 @@ namespace Bank.Service
 {
     internal class Withdraw
     {
-        public static void PerformWithdraw(Account account, IMessageService messageService)
+        public static void PerformWithdraw(Account account, IMessageService messageService, IOutString outString)
         {
-            ConsoleWithdrawInput withdrawInput = new ConsoleWithdrawInput();
-            withdrawInput.OutString();
+            outString.OutString();
             string input = InputHandler.GetInput();
             ValidateService.ValidateWithdraw(account, input);
             double amount = double.Parse(input);

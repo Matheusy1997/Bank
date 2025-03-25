@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using Bank.Data;
 using Bank.Entities;
 using Bank.Entities.Exception;
+using Bank.Interfaces;
 
 namespace Bank.Service
 {
     internal class Create
     {
-        public static void CreateAccount(Dictionary<int, Account> dictionaryAccount)
+        public static void CreateAccount(Dictionary<int, Account> dictionaryAccount, INameOut nameOut)
         {
-            ConsoleNameInput nameInput = new ConsoleNameInput();
-            nameInput.OutTypeAccount();
+            nameOut.OutTypeAccount();
             string accountTypeInput = InputHandler.GetInput();
             Console.WriteLine();
 
@@ -24,7 +24,7 @@ namespace Bank.Service
             {
                 case "business":
                     ConsoleMessageService messageService = new ConsoleMessageService();
-                    nameInput.OutName(accountTypeInput);
+                    nameOut.OutName(accountTypeInput);
                     nameAccount = InputHandler.GetInput();
 
                     ValidateService.ValidateNameAccount(nameAccount);
@@ -41,7 +41,7 @@ namespace Bank.Service
                 case "savings":
                     messageService = new ConsoleMessageService();
 
-                    nameInput.OutName(accountTypeInput);
+                    nameOut.OutName(accountTypeInput);
                     nameAccount = InputHandler.GetInput();
 
                     ValidateService.ValidateNameAccount(nameAccount);

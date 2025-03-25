@@ -23,34 +23,12 @@ namespace Bank.Controllers
                 Console.WriteLine("5. Out");
                 Console.Write("Choose a service: ");
 
-                string input = Console.ReadLine();
-                if (!int.TryParse(input, out option))
-                {
-                    Console.WriteLine("Invalid input. Please enter a number");
-                    continue;
-                }
+                string input = InputHandler.GetInput();
 
-                switch (option)
-                {
-                    case 1:
-                        Create.CreateAccount(dictionaryAccount);
-                        break;
-                    case 2:
-                        PerformAccount.PerformAccountOperation(dictionaryAccount);
-                        break;
-                    case 3:
-                        Display.DisplayAccount(dictionaryAccount);
-                        break;
-                    case 4:
-                        Delete.DeleteAccount(dictionaryAccount);
-                        break;
-                    case 5:
-                        Console.WriteLine("Bye!");
-                        break;
-                    default:
-                        Console.WriteLine("Invalid Option");
-                        break;
-                }
+                option = ValidateService.ParseInt(input);
+                ValidateService.ValidateKey(menuOptions, option);
+                menuOptions[option](dictionaryAccount);
+              
                 Console.WriteLine();
             } while (option != 5);
 
