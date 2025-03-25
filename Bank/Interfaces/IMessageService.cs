@@ -14,5 +14,6 @@ namespace Bank.Interfaces
         void ShowLoanMessage(BusinessAccount originAccount, double amount);
         void ShowWithdrawrMessage(Account originAccount, double amount);
         void ShowCreateAccountMessage(Account account);
+        void ShowMenuOption();
     }
 }

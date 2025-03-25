@@ -46,6 +46,16 @@ namespace Bank.Service
             Console.WriteLine();
         }
 
+        public void ShowMenuOption()
+        {
+            Console.WriteLine("1. Register Account");
+            Console.WriteLine("2. Search Account");
+            Console.WriteLine("3. List All Accounts");
+            Console.WriteLine("4. Delet Account");
+            Console.WriteLine("5. Out");
+            Console.Write("Choose a service: ");
+        }
+
         public void ShowTransferMessage(Account originAccount, Account destinationAccount, double amount)
         {
             Console.WriteLine();
