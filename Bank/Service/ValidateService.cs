@@ -1,5 +1,6 @@
 ﻿
 using Bank.Entities;
+using Bank.Entities.Exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,27 @@ namespace Bank.Service
             ValidateAmountGreaterThanZero(amount);
             ValidateSufficientBalance(account, amount);
         }
+
+        public static void ValidateNameAccount(string name)
+        {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+            {
+                throw new DomainException("Name is required");
+            }
+        }
+
+        public static void ValidateTypeAccount(string typeAccount)
+        {
+            if (string.IsNullOrEmpty(typeAccount) || string.IsNullOrWhiteSpace(typeAccount))
+            {
+                throw new DomainException("Type account is required");
+            }
+            if(typeAccount.ToLower() != "business" || typeAccount.ToLower() != "savings")
+            {
+                throw new DomainException("Type account invalid!");
+            }
+        }
+
 
         private static double ParseDouble(string input)
         {

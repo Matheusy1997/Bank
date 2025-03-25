@@ -14,10 +14,9 @@ namespace Bank.Service
         public static void CreateAccount(Dictionary<int, Account> dictionaryAccount)
         {
             Random random = new Random();
-
-            Console.WriteLine("What type of account to register?");
-            Console.Write("Business or Savings: ");
-            string accountTypeInput = Console.ReadLine();
+            ConsoleNameInput nameInput = new ConsoleNameInput();
+            
+            string accountTypeInput = nameInput.GetTypeAccount();
             Console.WriteLine();
 
             string nameAccount;
@@ -25,14 +24,10 @@ namespace Bank.Service
             switch (accountTypeInput.ToLower())
             {
                 case "business":
-                    Console.WriteLine("Type Account: Business");
-                    Console.Write("Write the account name: ");
-                    nameAccount = Console.ReadLine();
+                    
+                    nameAccount = nameInput.GetName(accountTypeInput);
 
-                    if (string.IsNullOrEmpty(nameAccount) || string.IsNullOrWhiteSpace(nameAccount))
-                    {
-                        throw new DomainException("Name is required");
-                    }
+                    ValidateService.ValidateNameAccount(nameAccount);
 
                     while (true)
                     {
@@ -50,14 +45,10 @@ namespace Bank.Service
                     }
                     break;
                 case "savings":
-                    Console.WriteLine("Type Account: Savings");
-                    Console.Write("Write the account name: ");
-                    nameAccount = Console.ReadLine();
 
-                    if (string.IsNullOrEmpty(nameAccount) || string.IsNullOrWhiteSpace(nameAccount))
-                    {
-                        throw new DomainException("Name is required");
-                    }
+                    nameAccount = nameInput.GetName(accountTypeInput);
+
+                    ValidateService.ValidateNameAccount(nameAccount);
 
                     while (true)
                     {
@@ -76,11 +67,7 @@ namespace Bank.Service
                     }
                     break;
                 default:
-                    if (string.IsNullOrEmpty(accountTypeInput) || string.IsNullOrWhiteSpace(accountTypeInput)
-                        || accountTypeInput.ToLower() != "business" || accountTypeInput.ToLower() != "savings")
-                    {
-                        Console.WriteLine("Type account invalid!");
-                    }
+                    ValidateService.ValidateTypeAccount(accountTypeInput);
                     break;
             }
         }
