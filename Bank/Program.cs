@@ -3,6 +3,7 @@ using Bank.Controllers;
 using Bank.Data;
 using Bank.Entities;
 using Bank.Entities.Exception;
+using Bank.Service;
 
 namespace Bank
 {
@@ -13,10 +14,10 @@ namespace Bank
             try
             {
                 Dictionary<int, Account> dictionaryAccount = new Dictionary<int, Account>();
-
+                
                 SearchFile.SearchFileAccount(dictionaryAccount);
 
-                Option.OptionMenu(dictionaryAccount);
+                Option.OptionMenu(dictionaryAccount, BankDelegate.MenuOperations);
 
                 
             }

@@ -66,7 +66,7 @@ namespace Bank.Service
             Console.WriteLine($"Amount: {amount.ToString("C", new CultureInfo("pt-br"))}");
             Console.WriteLine($"Origin Account: {originAccount.NumberAccount}");
             Console.WriteLine($"New Balance: {originAccount.Balance.ToString("C", new CultureInfo("pt-br"))}");
-            Console.WriteLine(
+            Console.WriteLine();
         }
     }
 }

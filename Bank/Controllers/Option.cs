@@ -11,7 +11,7 @@ namespace Bank.Controllers
 {
     internal class Option
     {
-        public static void OptionMenu(Dictionary<int, Account> dictionaryAccount)
+        public static void OptionMenu(Dictionary<int, Account> dictionaryAccount,Dictionary<int, BankDelegate.MenuOption> menuOptions)
         {
             int option = 0;
             do
