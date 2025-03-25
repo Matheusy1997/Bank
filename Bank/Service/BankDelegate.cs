@@ -36,10 +36,11 @@ namespace Bank.Service
 
         public static Dictionary<int, MenuOption> MenuOperations = new Dictionary<int, MenuOption>
         {
-            {1, (account) => Create.CreateAccount(account, new ConsoleNameInput())},
-            {2, (account) => PerformAccount.PerformAccountOperation(account)},
-            {3, (account) => Display.DisplayAccount(account)},
-            {4, (account) => Delete.DeleteAccount(account)}
+            {1, account => Create.CreateAccount(account, new ConsoleNameInput())},
+            {2, account => PerformAccount.PerformAccountOperation(account)},
+            {3, account => Display.DisplayAccount(account)},
+            {4, account => Delete.DeleteAccount(account)},
+            {5, account => Console.WriteLine("Bye") }
         };
 
 
